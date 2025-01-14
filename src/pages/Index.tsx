@@ -1,7 +1,24 @@
-import { Brain, BarChart, Rocket, MessageSquare } from "lucide-react";
+import { 
+  Brain, 
+  BarChart, 
+  Rocket, 
+  MessageSquare,
+  Search,
+  Share2,
+  Mail,
+  FileText,
+  TrendingUp,
+  Layout,
+  List,
+  PenTool,
+  RefreshCw,
+  Megaphone
+} from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ContactForm } from "@/components/ContactForm";
+import { AboutSection } from "@/components/AboutSection";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   return (
@@ -17,14 +34,12 @@ const Index = () => {
             className="w-full h-full object-cover opacity-30"
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-float">
-            Transform Your Digital Presence with{" "}
-            <span className="text-accent">AI-Powered</span> Marketing
+        <div className="absolute bottom-0 left-0 right-0 z-10 text-center pb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white animate-float">
+            Invisioned Marketing
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Leverage cutting-edge artificial intelligence to revolutionize your
-            marketing strategy and drive unprecedented growth.
+          <p className="text-xl text-white max-w-2xl mx-auto mb-8 hover:text-pink-400 transition-colors duration-300">
+            Dreams don't come true, visions do
           </p>
         </div>
       </section>
@@ -54,29 +69,61 @@ const Index = () => {
               description="Intelligent conversation automation for better engagement"
               Icon={MessageSquare}
             />
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">About Invisioned</h2>
-            <p className="text-gray-300 mb-8">
-              We combine human creativity with artificial intelligence to deliver
-              marketing solutions that drive real results. Our team of experts
-              leverages cutting-edge AI technology to help businesses grow and
-              succeed in the digital age.
-            </p>
-            <img
-              src="/lovable-uploads/e37ad8e8-a3f4-4d85-a0bc-308b8addbb92.png"
-              alt="Invisioned Marketing Logo"
-              className="max-w-[200px] mx-auto animate-glow"
+            <ServiceCard
+              title="Website Analysis"
+              description="Analyze performance and SEO using Google Analytics and Search Console"
+              Icon={Search}
+            />
+            <ServiceCard
+              title="Social Media Management"
+              description="Setup and manage social accounts with tools like Hootsuite and Buffer"
+              Icon={Share2}
+            />
+            <ServiceCard
+              title="Email Marketing"
+              description="Create targeted email campaigns to engage your audience"
+              Icon={Mail}
+            />
+            <ServiceCard
+              title="Content Creation"
+              description="Boost online presence with articles, videos, and graphics"
+              Icon={FileText}
+            />
+            <ServiceCard
+              title="SEO Optimization"
+              description="Improve search rankings with keyword research and link building"
+              Icon={TrendingUp}
+            />
+            <ServiceCard
+              title="Landing Pages"
+              description="Create high-converting landing pages for your campaigns"
+              Icon={Layout}
+            />
+            <ServiceCard
+              title="Email List Building"
+              description="Collect and utilize email addresses for targeted marketing"
+              Icon={List}
+            />
+            <ServiceCard
+              title="Website Copywriting"
+              description="Create compelling and effective website content"
+              Icon={PenTool}
+            />
+            <ServiceCard
+              title="Website Redesign"
+              description="Improve user experience and engagement with redesigns"
+              Icon={RefreshCw}
+            />
+            <ServiceCard
+              title="Social Media Ads"
+              description="Promote products/services to targeted social media audiences"
+              Icon={Megaphone}
             />
           </div>
         </div>
       </section>
+
+      <AboutSection />
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-background/95">
