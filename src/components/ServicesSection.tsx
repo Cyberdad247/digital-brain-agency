@@ -12,7 +12,9 @@ import {
   List,
   PenTool,
   RefreshCw,
-  Megaphone
+  Megaphone,
+  Zap,
+  Bot
 } from "lucide-react";
 import { ServiceCard } from "@/components/ServiceCard";
 
@@ -86,6 +88,16 @@ const services = [
     title: "Social Media Ads",
     description: "Promote products/services to targeted social media audiences",
     Icon: Megaphone,
+  },
+  {
+    title: "Workflow Automation",
+    description: "Automate repetitive tasks and streamline business processes",
+    Icon: Zap,
+  },
+  {
+    title: "AI Agent Creation",
+    description: "Build custom AI agents for specialized business needs",
+    Icon: Bot,
   },
 ];
 

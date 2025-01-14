@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Index from "./pages/Index"
 import Dashboard from "./pages/Dashboard"
 import { Blog } from "./pages/Blog"
+import { Chatbot } from "./components/Chatbot"
 
 const queryClient = new QueryClient()
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
         </Routes>
       </BrowserRouter>
+      <Chatbot />
     </TooltipProvider>
   </QueryClientProvider>
 )

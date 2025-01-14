@@ -33,11 +33,11 @@ export const Navigation = () => {
   }
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Blog', href: '#blog' },
+    { name: 'Contact', href: '#contact' },
   ]
 
   return (
@@ -49,13 +49,13 @@ export const Navigation = () => {
 
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.name}
-              to={item.href}
+              href={item.href}
               className="text-white hover:text-amber-400 transition-colors"
             >
               {item.name}
-            </Link>
+            </a>
           ))}
           {user ? (
             <>
@@ -93,15 +93,15 @@ export const Navigation = () => {
           <div className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md md:hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-gray-300 hover:text-white transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-gray-300 hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.name}
+            </a>
+          ))}
               {user ? (
                 <>
                   <Link
