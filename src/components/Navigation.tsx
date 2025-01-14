@@ -25,7 +25,7 @@ export const Navigation = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-[#FEF7CD] transition-colors duration-300"
             >
               {item.name}
             </a>
@@ -49,7 +49,7 @@ export const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-300 hover:text-[#FEF7CD] transition-colors duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
