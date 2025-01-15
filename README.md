@@ -52,17 +52,34 @@ npm run dev
 
 ## What technologies are used for this project?
 
-This project is built with .
+This project is built with modern web technologies:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Vite - Fast frontend tooling
+- TypeScript - Type-safe JavaScript
+- React - Component-based UI library
+- shadcn-ui - Beautifully designed components
+- Tailwind CSS - Utility-first CSS framework
+- Supabase - Backend-as-a-Service
+- Bun - Fast JavaScript runtime
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/3a687ab7-9e0d-43e3-a3c2-8ea133f55e56) and click on Share -> Publish.
+**Using Lovable**
+- Open [Lovable](https://lovable.dev/projects/3a687ab7-9e0d-43e3-a3c2-8ea133f55e56)
+- Click on Share -> Publish
+
+**Local Deployment**
+1. Build the project:
+```sh
+npm run build
+```
+2. Deploy the generated `dist` folder to your preferred hosting provider (Vercel, Netlify, etc.)
+
+**Features**
+- Customizable AI chatbot with multiple personas
+- Supabase-powered backend
+- Responsive UI components
+- Pre-configured CI/CD
 
 ## I want to use a custom domain - is that possible?
 

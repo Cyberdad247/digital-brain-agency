@@ -32,31 +32,50 @@ export const Navigation = () => {
     navigate('/')
   }
 
-  const navItems = [
+  const renderNavItem = (item: { name: string; href: string }, isMobile = false) => {
+    if (item.href.startsWith('#')) {
+      return (
+        <a
+          key={item.name}
+          href={item.href}
+          className={`${isMobile ? 'text-gray-300' : 'text-white'} hover:text-amber-400 transition-colors`}
+          onClick={isMobile ? () => setIsOpen(false) : undefined}
+        >
+          {item.name}
+        </a>
+      )
+    }
+    return (
+      <Link
+        key={item.name}
+        to={item.href}
+        className={`${isMobile ? 'text-gray-300' : 'text-white'} hover:text-amber-400 transition-colors`}
+        onClick={isMobile ? () => setIsOpen(false) : undefined}
+      >
+        {item.name}
+      </Link>
+    )
+  }
+
+  const navItems: { name: string; href: string }[] = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Blog', href: '#blog' },
     { name: 'Contact', href: '#contact' },
-  ]
+    { name: 'Playground', href: '/playground' },
+  ];
 
   return (
-    <nav className="fixed w-full bg-background/80 backdrop-blur-md z-50 py-4">
+    <>
+      <nav className="fixed w-full bg-background/80 backdrop-blur-md z-50 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-white">
           Invisioned
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-white hover:text-amber-400 transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
+          {navItems.map((item) => renderNavItem(item))}
           {user ? (
             <>
               <Link
@@ -92,16 +111,7 @@ export const Navigation = () => {
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md md:hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-300 hover:text-white transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.name}
-            </a>
-          ))}
+              {navItems.map((item) => renderNavItem(item, true))}
               {user ? (
                 <>
                   <Link
@@ -130,6 +140,7 @@ export const Navigation = () => {
           </div>
         )}
       </div>
-    </nav>
+      </nav>
+    </>
   )
 }
