@@ -1,35 +1,62 @@
-import { Navigation } from "@/components/Navigation";
-import { ServicesSection } from "@/components/ServicesSection";
-import { ContactForm } from "@/components/ContactForm";
-import { AboutSection } from "@/components/AboutSection";
-import { Button } from "@/components/ui/button";
+import { ServicesSection } from '@/components/ServicesSection';
+import { ContactForm } from '@/components/ContactForm';
+import { AboutSection } from '@/components/AboutSection';
+import { Testimonials } from '@/components/Testimonials';
+import { Button } from '@/components/ui/button';
+import { Navigation } from '@/components/Navigation';
+import styles from '@/components/Hero.module.css';
+import { CSSProperties, useEffect, useRef } from 'react';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
-      <Navigation />
+  const testimonialRef = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (testimonialRef.current) {
+      observer.observe(testimonialRef.current);
+    }
+
+    return () => {
+      if (testimonialRef.current) {
+        observer.unobserve(testimonialRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#0a0a0f] text-white relative">
+      <Navigation />
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/lovable-uploads/eaecd866-2c98-451b-bc04-52404085afe5.png"
-            alt="AI Background"
-            className="w-full h-full object-cover opacity-30"
-          />
+      <div className={styles.heroContainer}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroText}>
+            <h1>Invisioned Marketing</h1>
+            <p>Dreams don't come true, visions do</p>
+          </div>
+          <div className={styles.heroCta}>
+            <button>Get Started</button>
+          </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 z-10 text-center pb-20">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white animate-float">
-            Invisioned Marketing
-          </h1>
-          <p className="text-xl text-white max-w-2xl mx-auto mb-8 hover:text-pink-400 transition-colors duration-300">
-            Dreams don't come true, visions do
-          </p>
-        </div>
-      </section>
+      </div>
 
       <section id="services">
         <ServicesSection />
+      </section>
+
+      <section id="testimonials" className="py-20">
+        <div ref={testimonialRef}>
+          <Testimonials />
+        </div>
       </section>
 
       <section id="about">
@@ -37,17 +64,17 @@ const Index = () => {
       </section>
 
       {/* Blog Section */}
-      <section id="blog" className="py-20 bg-background/95">
+      <section id="blog" className="bg-background/95 py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Blog</h2>
+          <h2 className="mb-12 text-center text-3xl font-bold">Blog</h2>
           <p className="text-center">Coming soon...</p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-background/95">
+      <section id="contact" className="bg-background/95 py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Get in Touch</h2>
+          <h2 className="mb-12 text-center text-3xl font-bold">Get in Touch</h2>
           <ContactForm />
         </div>
       </section>

@@ -19,7 +19,7 @@ export default function Playground() {
     console.log('Running code:', code);
   };
 
-  const handleAddTerminalOutput = (output: (string | {message: string})[]) => {
+  const handleAddTerminalOutput = (output: (string | { message: string })[]) => {
     // Terminal output is now handled internally by TerminalPanel
     console.log('Terminal output:', output);
   };
@@ -49,33 +49,58 @@ export default function Playground() {
   };
 
   return (
-    <div className="h-[calc(100vh-4rem)] bg-[#0d0d0d] overflow-hidden relative">
-      <div className="absolute top-4 left-4 z-50">
-        <img 
-          src="/logo.jpg" 
-          alt="Home" 
-          className="w-12 h-12 cursor-pointer hover:opacity-80 transition-opacity"
+    <div className="relative h-[calc(100vh-4rem)] overflow-hidden bg-[#0d0d0d]">
+      <div className="absolute left-4 top-4 z-50">
+        <img
+          src="/logo.jpg"
+          alt="Home"
+          className="h-12 w-12 cursor-pointer transition-opacity hover:opacity-80"
           onClick={() => navigate('/')}
         />
       </div>
 
       {/* Top Toolbar */}
-      <div className="absolute top-4 right-4 z-50 flex gap-2">
-        <Button variant="outline" size="sm" onClick={handleNewFile} className="hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)] transition-all">
+      <div className="absolute right-4 top-4 z-50 flex gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleNewFile}
+          className="transition-all hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)]"
+        >
           <File className="mr-2 h-4 w-4" />
           New File
         </Button>
-        <Button variant="outline" size="sm" onClick={handleOpenFolder} className="hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)] transition-all">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleOpenFolder}
+          className="transition-all hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)]"
+        >
           <Folder className="mr-2 h-4 w-4" />
           Open Folder
         </Button>
-        <Button variant="outline" size="sm" onClick={handleSave} className="hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)] transition-all">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleSave}
+          className="transition-all hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)]"
+        >
           Save
         </Button>
-        <Button variant="outline" size="sm" onClick={handleRun} className="hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)] transition-all">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleRun}
+          className="transition-all hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)]"
+        >
           Run
         </Button>
-        <Button variant="outline" size="sm" onClick={handleDebug} className="hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)] transition-all">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleDebug}
+          className="transition-all hover:bg-[#1f2023] hover:text-[#67e8f9] hover:shadow-[0_0_8px_rgba(103,232,249,0.3)]"
+        >
           Debug
         </Button>
       </div>
@@ -83,8 +108,8 @@ export default function Playground() {
       <ResizablePanelGroup direction="horizontal" className="p-4">
         {/* Left Panel - File Explorer */}
         <ResizablePanel defaultSize={15} minSize={10} maxSize={20}>
-          <div className="h-full p-2 border-r border-[#1f2023] shadow-[0_0_8px_rgba(103,232,249,0.1)]">
-            <div className="flex items-center justify-between mb-2">
+          <div className="h-full border-r border-[#1f2023] p-2 shadow-[0_0_8px_rgba(103,232,249,0.1)]">
+            <div className="mb-2 flex items-center justify-between">
               <h3 className="text-sm font-semibold">Explorer</h3>
               <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
                 <Plus className="h-4 w-4" />
@@ -94,21 +119,24 @@ export default function Playground() {
           </div>
         </ResizablePanel>
 
-        <ResizableHandle withHandle className="bg-[#1f2023] hover:bg-[#67e8f9]/20 transition-colors" />
+        <ResizableHandle
+          withHandle
+          className="bg-[#1f2023] transition-colors hover:bg-[#67e8f9]/20"
+        />
 
         {/* Center Panel - Code Editor */}
         <ResizablePanel defaultSize={55} minSize={40}>
           <Tabs defaultValue="code" className="h-full">
-            <TabsList className="w-full justify-start bg-[#1f2023] border border-[#67e8f9]/20">
-              <TabsTrigger 
-                value="code" 
+            <TabsList className="w-full justify-start border border-[#67e8f9]/20 bg-[#1f2023]">
+              <TabsTrigger
+                value="code"
                 className="data-[state=active]:bg-[#67e8f9]/10 data-[state=active]:text-[#67e8f9] data-[state=active]:shadow-[0_0_8px_rgba(103,232,249,0.2)]"
               >
                 Code Editor
               </TabsTrigger>
             </TabsList>
             <TabsContent value="code" className="h-[calc(100%-2.5rem)] border border-[#67e8f9]/20">
-              <CodeEditor 
+              <CodeEditor
                 onCodeChange={setCode}
                 onRunCode={handleRunCode}
                 diagnostics={diagnostics}
@@ -118,28 +146,37 @@ export default function Playground() {
           </Tabs>
         </ResizablePanel>
 
-        <ResizableHandle withHandle className="bg-[#1f2023] hover:bg-[#67e8f9]/20 transition-colors" />
+        <ResizableHandle
+          withHandle
+          className="bg-[#1f2023] transition-colors hover:bg-[#67e8f9]/20"
+        />
 
         {/* Right Panel - Extensions & Terminal */}
         <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
           <ResizablePanelGroup direction="vertical">
             <ResizablePanel defaultSize={60} minSize={30}>
               <Tabs defaultValue="extensions" className="h-full">
-                <TabsList className="w-full justify-start bg-[#1f2023] border border-[#67e8f9]/20">
-                  <TabsTrigger 
-                    value="extensions" 
+                <TabsList className="w-full justify-start border border-[#67e8f9]/20 bg-[#1f2023]">
+                  <TabsTrigger
+                    value="extensions"
                     className="data-[state=active]:bg-[#67e8f9]/10 data-[state=active]:text-[#67e8f9] data-[state=active]:shadow-[0_0_8px_rgba(103,232,249,0.2)]"
                   >
                     Extensions
                   </TabsTrigger>
                 </TabsList>
-                <TabsContent value="extensions" className="h-[calc(100%-2.5rem)] border border-[#67e8f9]/20">
+                <TabsContent
+                  value="extensions"
+                  className="h-[calc(100%-2.5rem)] border border-[#67e8f9]/20"
+                >
                   <ExtensionsPanel />
                 </TabsContent>
               </Tabs>
             </ResizablePanel>
 
-            <ResizableHandle withHandle className="bg-[#1f2023] hover:bg-[#67e8f9]/20 transition-colors" />
+            <ResizableHandle
+              withHandle
+              className="bg-[#1f2023] transition-colors hover:bg-[#67e8f9]/20"
+            />
 
             <ResizablePanel defaultSize={40} minSize={20}>
               <TerminalPanel />

@@ -37,7 +37,7 @@ print(df.describe())
 # Create visualization
 df.plot(kind='bar', x='category', y='value')
 plt.show()`,
-    language: 'python'
+    language: 'python',
   },
   {
     id: 'web-dev',
@@ -53,7 +53,7 @@ function MyComponent() {
     </div>
   );
 }`,
-    language: 'typescript'
+    language: 'typescript',
   },
   {
     id: 'game-dev',
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         transform.Translate(0, 0, move);
     }
 }`,
-    language: 'csharp'
+    language: 'csharp',
   },
   {
     id: 'api-integration',
@@ -86,7 +86,7 @@ async function fetchData() {
     console.error('Error:', error);
   }
 }`,
-    language: 'typescript'
+    language: 'typescript',
   },
   {
     id: 'automation',
@@ -104,7 +104,7 @@ function processFiles(directory) {
     });
   });
 }`,
-    language: 'javascript'
+    language: 'javascript',
   },
   {
     id: 'simulations',
@@ -125,7 +125,7 @@ function monteCarlo(iterations) {
   
   return 4 * inside / iterations;
 }`,
-    language: 'javascript'
+    language: 'javascript',
   },
   {
     id: 'learning-resources',
@@ -145,7 +145,7 @@ const resources = {
 function openResource(resource) {
   window.open(resources[resource], '_blank');
 }`,
-    language: 'typescript'
+    language: 'typescript',
   },
   {
     id: 'community-features',
@@ -283,6 +283,6 @@ function Comments({ postId }) {
     </div>
   );
 }`,
-    language: 'typescript'
-  }
+    language: 'typescript',
+  },
 ];

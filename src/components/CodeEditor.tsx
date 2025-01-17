@@ -3,10 +3,24 @@ import { motion } from 'framer-motion';
 import Editor from '@monaco-editor/react';
 import { Button } from './ui/button';
 import { Alert, AlertDescription } from './ui/alert';
-import { TriangleAlert, Play, LayoutTemplate, FileSearch, TestTube2, Rocket, FileText, Sparkles, GitCommit, GitBranch, GitPullRequest, GitMerge, History } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { ScrollArea } from "./ui/scroll-area";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
+import {
+  TriangleAlert,
+  Play,
+  LayoutTemplate,
+  FileSearch,
+  TestTube2,
+  Rocket,
+  FileText,
+  Sparkles,
+  GitCommit,
+  GitBranch,
+  GitPullRequest,
+  GitMerge,
+  History,
+} from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { ScrollArea } from './ui/scroll-area';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
 
 /**
  * Represents a code template with metadata and content
@@ -83,7 +97,6 @@ interface CodeAnalysisResult {
   };
 }
 
-
 interface TestResult {
   passed: boolean;
   testName: string;
@@ -103,7 +116,7 @@ interface CodeEditorProps {
   onCodeChange?: (code: string) => void;
   onRunCode?: (code: string) => Promise<void>;
   diagnostics?: Diagnostic[];
-  addTerminalOutput?: (output: (string | {message: string})[]) => void;
+  addTerminalOutput?: (output: (string | { message: string })[]) => void;
 }
 
 import { TEMPLATES } from '../utils/templates';
@@ -113,7 +126,7 @@ export default function CodeEditor({
   onCodeChange,
   onRunCode,
   diagnostics = [],
-  addTerminalOutput = () => {}
+  addTerminalOutput = () => {},
 }: CodeEditorProps) {
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [code, setCode] = useState(`function hello() {\n  console.log('Hello world!');\n}`);
@@ -128,7 +141,7 @@ export default function CodeEditor({
     changes: 0,
     ahead: 0,
     behind: 0,
-    conflicts: 0
+    conflicts: 0,
   });
 
   /**
@@ -151,12 +164,12 @@ export default function CodeEditor({
       moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
       module: monaco.languages.typescript.ModuleKind.ESNext,
       noEmit: true,
-      typeRoots: ["node_modules/@types"],
+      typeRoots: ['node_modules/@types'],
       jsx: monaco.languages.typescript.JsxEmit.React,
       strict: true,
       esModuleInterop: true,
       skipLibCheck: true,
-      forceConsistentCasingInFileNames: true
+      forceConsistentCasingInFileNames: true,
     });
 
     // HTML configuration
@@ -173,11 +186,11 @@ export default function CodeEditor({
         preserveNewLines: true,
         maxPreserveNewLines: 2,
         indentHandlebars: false,
-        extraLiners: 'head,body,/html'
+        extraLiners: 'head,body,/html',
       },
       suggest: {
-        html5: true
-      }
+        html5: true,
+      },
     });
 
     // CSS configuration
@@ -201,8 +214,8 @@ export default function CodeEditor({
         propertyIgnoredDueToDisplay: 'warning',
         important: 'ignore',
         float: 'ignore',
-        idSelector: 'ignore'
-      }
+        idSelector: 'ignore',
+      },
     });
 
     // Register additional languages
@@ -216,13 +229,13 @@ export default function CodeEditor({
     monaco.languages.register({
       id: 'sql',
       extensions: ['.sql'],
-      aliases: ['SQL', 'sql']
+      aliases: ['SQL', 'sql'],
     });
 
     monaco.languages.register({
       id: 'powershell',
       extensions: ['.ps1'],
-      aliases: ['PowerShell', 'powershell', 'ps']
+      aliases: ['PowerShell', 'powershell', 'ps'],
     });
   };
 
@@ -273,7 +286,7 @@ export default function CodeEditor({
           startLineNumber: 1,
           startColumn: 1,
           endLineNumber: position.lineNumber,
-          endColumn: position.column
+          endColumn: position.column,
         });
 
         try {
@@ -287,9 +300,9 @@ export default function CodeEditor({
               language: model.getLanguageId(),
               position: {
                 line: position.lineNumber,
-                column: position.column
-              }
-            })
+                column: position.column,
+              },
+            }),
           });
 
           if (!response.ok) throw new Error('AI completion failed');
@@ -308,27 +321,28 @@ export default function CodeEditor({
           return {
             suggestions: suggestions.map((s: Suggestion) => ({
               label: s.label,
-              kind: monaco.languages.CompletionItemKind[s.kind] || 
-                    monaco.languages.CompletionItemKind.Text,
+              kind:
+                monaco.languages.CompletionItemKind[s.kind] ||
+                monaco.languages.CompletionItemKind.Text,
               insertText: s.insertText,
-              insertTextRules: s.isSnippet ? 
-                monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet : 
-                undefined,
+              insertTextRules: s.isSnippet
+                ? monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
+                : undefined,
               detail: s.detail,
               documentation: s.documentation,
               range: {
                 startLineNumber: position.lineNumber,
                 endLineNumber: position.lineNumber,
                 startColumn: position.column - (s.prefixLength || 0),
-                endColumn: position.column
-              }
-            }))
+                endColumn: position.column,
+              },
+            })),
           };
         } catch (error) {
           console.error('AI completion error:', error);
           return { suggestions: [] };
         }
-      }
+      },
     });
 
     // Basic completion provider
@@ -339,7 +353,7 @@ export default function CodeEditor({
           startLineNumber: position.lineNumber,
           endLineNumber: position.lineNumber,
           startColumn: word.startColumn,
-          endColumn: word.endColumn
+          endColumn: word.endColumn,
         };
 
         return {
@@ -350,27 +364,28 @@ export default function CodeEditor({
               insertText: 'console.log(${1:value})',
               insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
               detail: 'Console log statement',
-              range: range
+              range: range,
             },
             {
               label: 'fetch',
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'fetch(\'${1:url}\')',
+              insertText: "fetch('${1:url}')",
               insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
               detail: 'Fetch API call',
-              range: range
+              range: range,
             },
             {
               label: 'useState',
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialValue})',
+              insertText:
+                'const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialValue})',
               insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
               detail: 'React useState hook',
-              range: range
-            }
-          ]
+              range: range,
+            },
+          ],
         } as monaco.languages.CompletionList;
-      }
+      },
     });
   };
 
@@ -381,12 +396,12 @@ export default function CodeEditor({
     monaco.languages.registerDocumentSemanticTokensProvider('typescript', {
       getLegend: () => ({
         tokenTypes: ['variable', 'function', 'class', 'interface'],
-        tokenModifiers: []
+        tokenModifiers: [],
       }),
       provideDocumentSemanticTokens: (model) => {
         const tokens = [];
         const lines = model.getLinesContent();
-        
+
         lines.forEach((line, lineNumber) => {
           const words = line.split(/\W+/);
           words.forEach((word) => {
@@ -400,21 +415,21 @@ export default function CodeEditor({
 
         return {
           data: new Uint32Array(tokens),
-          resultId: null
+          resultId: null,
         };
       },
-      releaseDocumentSemanticTokens: () => {}
+      releaseDocumentSemanticTokens: () => {},
     });
   };
 
   return (
     <motion.div
-      className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border rounded-lg flex h-[700px] w-full"
+      className="flex h-[700px] w-full rounded-lg border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       whileHover={{ scale: 1.01 }}
     >
       {showTemplates && (
         <div className="w-1/4 border-r p-4">
-          <h2 className="text-lg font-semibold mb-4 flex items-center">
+          <h2 className="mb-4 flex items-center text-lg font-semibold">
             <LayoutTemplate className="mr-2 h-5 w-5" />
             Code Templates
           </h2>
@@ -424,12 +439,12 @@ export default function CodeEditor({
                 <TabsTrigger value="data-analysis">Analysis</TabsTrigger>
                 <TabsTrigger value="development">Development</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="data-analysis">
-                {TEMPLATES.filter(t => t.id === 'data-analysis').map(template => (
-                  <Card 
+                {TEMPLATES.filter((t) => t.id === 'data-analysis').map((template) => (
+                  <Card
                     key={template.id}
-                    className="mb-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                    className="mb-4 cursor-pointer transition-colors hover:bg-accent/50"
                     onClick={() => {
                       setCode(template.code);
                       onCodeChange?.(template.code);
@@ -451,10 +466,10 @@ export default function CodeEditor({
               </TabsContent>
 
               <TabsContent value="development">
-                {TEMPLATES.filter(t => t.id !== 'data-analysis').map(template => (
-                  <Card 
+                {TEMPLATES.filter((t) => t.id !== 'data-analysis').map((template) => (
+                  <Card
                     key={template.id}
-                    className="mb-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                    className="mb-4 cursor-pointer transition-colors hover:bg-accent/50"
                     onClick={() => {
                       setCode(template.code);
                       onCodeChange?.(template.code);
@@ -478,7 +493,7 @@ export default function CodeEditor({
           </ScrollArea>
         </div>
       )}
-      
+
       <div className={`h-[600px] ${showTemplates ? 'w-3/4' : 'w-full'}`}>
         <Editor
           theme={theme === 'dark' ? 'vs-dark' : 'vs-light'}
@@ -509,21 +524,17 @@ export default function CodeEditor({
             folding: true,
             lightbulb: { enabled: monaco.editor.ShowLightbulbIconMode.On },
             matchBrackets: 'always',
-            wordWrap: 'on'
+            wordWrap: 'on',
           }}
         />
       </div>
-      <div className="p-4 border-t flex justify-between items-center">
+      <div className="flex items-center justify-between border-t p-4">
         <div>
-          <Button 
-            variant="ghost" 
-            className="mr-2"
-            onClick={() => setShowTemplates(!showTemplates)}
-          >
+          <Button variant="ghost" className="mr-2" onClick={() => setShowTemplates(!showTemplates)}>
             <LayoutTemplate className="mr-2 h-4 w-4" />
             {showTemplates ? 'Hide' : 'Show'} Templates
           </Button>
-          <Button 
+          <Button
             className="mr-2"
             onClick={async () => {
               addTerminalOutput(['$ Running code...', 'Executing script...']);
@@ -538,7 +549,7 @@ export default function CodeEditor({
             <Play className="mr-2 h-4 w-4" />
             Run Code
           </Button>
-          <Button 
+          <Button
             variant="secondary"
             className="mr-2"
             onClick={async () => {
@@ -552,8 +563,8 @@ export default function CodeEditor({
                   },
                   body: JSON.stringify({
                     code,
-                    language: editorRef.current?.getModel()?.getLanguageId()
-                  })
+                    language: editorRef.current?.getModel()?.getLanguageId(),
+                  }),
                 });
 
                 if (!response.ok) throw new Error('Code review failed');
@@ -570,7 +581,7 @@ export default function CodeEditor({
           >
             {isReviewing ? (
               <div className="flex items-center">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                <div className="mr-2 h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
                 Reviewing...
               </div>
             ) : (
@@ -593,17 +604,17 @@ export default function CodeEditor({
                   },
                   body: JSON.stringify({
                     code,
-                    language: editorRef.current?.getModel()?.getLanguageId()
-                  })
+                    language: editorRef.current?.getModel()?.getLanguageId(),
+                  }),
                 });
 
                 if (!response.ok) throw new Error('Test execution failed');
                 const { results } = await response.json();
                 addTerminalOutput([
                   'Test execution complete!',
-                  ...results.map((r: TestResult) => 
-                    `${r.passed ? '✅' : '❌'} ${r.testName}: ${r.message}`
-                  )
+                  ...results.map(
+                    (r: TestResult) => `${r.passed ? '✅' : '❌'} ${r.testName}: ${r.message}`
+                  ),
                 ]);
               } catch (error: unknown) {
                 if (error instanceof Error) {
@@ -631,8 +642,8 @@ export default function CodeEditor({
                   body: JSON.stringify({
                     code,
                     language: editorRef.current?.getModel()?.getLanguageId(),
-                    format: 'markdown'
-                  })
+                    format: 'markdown',
+                  }),
                 });
 
                 if (!response.ok) throw new Error('Documentation generation failed');
@@ -640,7 +651,7 @@ export default function CodeEditor({
                 addTerminalOutput([
                   'Documentation generated successfully!',
                   'Documentation preview:',
-                  documentation
+                  documentation,
                 ]);
               } catch (error) {
                 addTerminalOutput(['Error during documentation generation:', error.message]);
@@ -665,26 +676,26 @@ export default function CodeEditor({
                   body: JSON.stringify({
                     code,
                     language: editorRef.current?.getModel()?.getLanguageId(),
-                    metrics: ['performance', 'memory', 'readability']
-                  })
+                    metrics: ['performance', 'memory', 'readability'],
+                  }),
                 });
 
                 if (!response.ok) throw new Error('Code optimization failed');
                 const { optimizedCode, metrics } = await response.json();
-                
+
                 // Update editor with optimized code
                 setCode(optimizedCode);
                 if (editorRef.current) {
                   editorRef.current.setValue(optimizedCode);
                 }
-                
+
                 addTerminalOutput([
                   'Code optimization complete!',
                   'Optimization metrics:',
                   `• Performance improvement: ${metrics.performance}%`,
                   `• Memory usage reduction: ${metrics.memory}%`,
                   `• Readability score: ${metrics.readability}/10`,
-                  'Optimized code has been applied to the editor'
+                  'Optimized code has been applied to the editor',
                 ]);
               } catch (error) {
                 addTerminalOutput(['Error during code optimization:', error.message]);
@@ -696,7 +707,7 @@ export default function CodeEditor({
           >
             {isOptimizing ? (
               <div className="flex items-center">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                <div className="mr-2 h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
                 Optimizing...
               </div>
             ) : (
@@ -715,7 +726,7 @@ export default function CodeEditor({
             {showVersionControl ? 'Hide' : 'Show'} Version Control
           </Button>
           {showVersionControl && (
-            <div className="absolute bottom-16 right-4 bg-background border rounded-lg p-4 w-96 z-50 shadow-lg">
+            <div className="absolute bottom-16 right-4 z-50 w-96 rounded-lg border bg-background p-4 shadow-lg">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
@@ -727,26 +738,20 @@ export default function CodeEditor({
                       {gitStatus.changes} changes
                     </span>
                     {gitStatus.ahead > 0 && (
-                      <span className="text-sm text-green-500">
-                        ↑{gitStatus.ahead}
-                      </span>
+                      <span className="text-sm text-green-500">↑{gitStatus.ahead}</span>
                     )}
                     {gitStatus.behind > 0 && (
-                      <span className="text-sm text-red-500">
-                        ↓{gitStatus.behind}
-                      </span>
+                      <span className="text-sm text-red-500">↓{gitStatus.behind}</span>
                     )}
                     {gitStatus.conflicts > 0 && (
-                      <span className="text-sm text-yellow-500">
-                        ⚠{gitStatus.conflicts}
-                      </span>
+                      <span className="text-sm text-yellow-500">⚠{gitStatus.conflicts}</span>
                     )}
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <textarea
-                    className="w-full p-2 border rounded text-sm"
+                    className="w-full rounded border p-2 text-sm"
                     placeholder="Commit message"
                     value={commitMessage}
                     onChange={(e) => setCommitMessage(e.target.value)}
@@ -765,11 +770,13 @@ export default function CodeEditor({
                             },
                             body: JSON.stringify({
                               message: commitMessage,
-                              files: [{
-                                path: 'src/components/CodeEditor.tsx',
-                                content: code
-                              }]
-                            })
+                              files: [
+                                {
+                                  path: 'src/components/CodeEditor.tsx',
+                                  content: code,
+                                },
+                              ],
+                            }),
                           });
 
                           if (!response.ok) throw new Error('Commit failed');
@@ -797,8 +804,8 @@ export default function CodeEditor({
                               'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
-                              branch: gitStatus.branch
-                            })
+                              branch: gitStatus.branch,
+                            }),
                           });
 
                           if (!response.ok) throw new Error('Push failed');
@@ -825,8 +832,8 @@ export default function CodeEditor({
                               'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
-                              branch: gitStatus.branch
-                            })
+                              branch: gitStatus.branch,
+                            }),
                           });
 
                           if (!response.ok) throw new Error('Pull failed');
@@ -835,7 +842,7 @@ export default function CodeEditor({
                           if (changes.conflicts > 0) {
                             addTerminalOutput([
                               'Pull successful with conflicts!',
-                              'Resolve conflicts in the version history panel'
+                              'Resolve conflicts in the version history panel',
                             ]);
                           } else {
                             addTerminalOutput(['Pull successful!']);
@@ -852,7 +859,7 @@ export default function CodeEditor({
                 </div>
 
                 <div className="border-t pt-4">
-                  <h3 className="text-sm font-medium mb-2 flex items-center">
+                  <h3 className="mb-2 flex items-center text-sm font-medium">
                     <History className="mr-2 h-4 w-4" />
                     Version History
                   </h3>
@@ -870,8 +877,8 @@ export default function CodeEditor({
                               'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
-                              file: 'src/components/CodeEditor.tsx'
-                            })
+                              file: 'src/components/CodeEditor.tsx',
+                            }),
                           });
 
                           if (!response.ok) throw new Error('Failed to fetch history');
@@ -881,13 +888,13 @@ export default function CodeEditor({
                             author: string;
                             date: string;
                           }
-                          
-                          const { history } = await response.json() as { history: CommitHistory[] };
+
+                          const { history } = (await response.json()) as {
+                            history: CommitHistory[];
+                          };
                           addTerminalOutput([
                             'Version history:',
-                            ...history.map(h => 
-                              `${h.hash.slice(0, 7)} - ${h.message}`
-                            )
+                            ...history.map((h) => `${h.hash.slice(0, 7)} - ${h.message}`),
                           ]);
                         } catch (error) {
                           addTerminalOutput(['Error fetching history:', error.message]);
@@ -909,8 +916,8 @@ export default function CodeEditor({
                               'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
-                              file: 'src/components/CodeEditor.tsx'
-                            })
+                              file: 'src/components/CodeEditor.tsx',
+                            }),
                           });
 
                           if (!response.ok) throw new Error('Failed to fetch diff');
@@ -919,13 +926,11 @@ export default function CodeEditor({
                             file: string;
                             changes: string[];
                           }
-                          
-                          const { diff } = await response.json() as { diff: FileDiff[] };
+
+                          const { diff } = (await response.json()) as { diff: FileDiff[] };
                           addTerminalOutput([
                             'File changes:',
-                            ...diff.map(d => 
-                              `${d.type} ${d.file}`
-                            )
+                            ...diff.map((d) => `${d.type} ${d.file}`),
                           ]);
                         } catch (error) {
                           addTerminalOutput(['Error fetching diff:', error.message]);
@@ -953,30 +958,41 @@ export default function CodeEditor({
                   body: JSON.stringify({
                     code,
                     language: editorRef.current?.getModel()?.getLanguageId(),
-                    analysisTypes: ['quality', 'performance', 'security']
-                  })
+                    analysisTypes: ['quality', 'performance', 'security'],
+                  }),
                 });
 
                 if (!response.ok) throw new Error('Code analysis failed');
-                const { results } = await response.json() as { results: CodeAnalysisResult[] };
-                
+                const { results } = (await response.json()) as { results: CodeAnalysisResult[] };
+
                 // Group results by category
-                const groupedResults = results.reduce((acc, result) => {
-                  acc[result.category] = acc[result.category] || [];
-                  acc[result.category].push(result);
-                  return acc;
-                }, {} as Record<string, CodeAnalysisResult[]>);
+                const groupedResults = results.reduce(
+                  (acc, result) => {
+                    acc[result.category] = acc[result.category] || [];
+                    acc[result.category].push(result);
+                    return acc;
+                  },
+                  {} as Record<string, CodeAnalysisResult[]>
+                );
 
                 addTerminalOutput([
                   'Code analysis complete!',
-                  ...Object.entries(groupedResults).map(([category, issues]) => 
-                    `${category} issues (${issues.length}):\n` +
-                    issues.map(issue => 
-                      `  ${issue.severity.toUpperCase()} - Line ${issue.startLineNumber}: ${issue.message}` +
-                      (issue.metrics ? `\n    Metrics: ${JSON.stringify(issue.metrics)}` : '') +
-                      (issue.suggestedFix ? `\n    Suggested Fix: ${issue.suggestedFix.description}` : '')
-                    ).join('\n')
-                  )
+                  ...Object.entries(groupedResults).map(
+                    ([category, issues]) =>
+                      `${category} issues (${issues.length}):\n` +
+                      issues
+                        .map(
+                          (issue) =>
+                            `  ${issue.severity.toUpperCase()} - Line ${issue.startLineNumber}: ${issue.message}` +
+                            (issue.metrics
+                              ? `\n    Metrics: ${JSON.stringify(issue.metrics)}`
+                              : '') +
+                            (issue.suggestedFix
+                              ? `\n    Suggested Fix: ${issue.suggestedFix.description}`
+                              : '')
+                        )
+                        .join('\n')
+                  ),
                 ]);
 
                 // Update diagnostics with analysis results
@@ -1002,16 +1018,13 @@ export default function CodeEditor({
                   },
                   body: JSON.stringify({
                     code,
-                    language: editorRef.current?.getModel()?.getLanguageId()
-                  })
+                    language: editorRef.current?.getModel()?.getLanguageId(),
+                  }),
                 });
 
                 if (!response.ok) throw new Error('Deployment failed');
                 const { url } = await response.json();
-                addTerminalOutput([
-                  'Deployment successful!',
-                  `Access your application at: ${url}`
-                ]);
+                addTerminalOutput(['Deployment successful!', `Access your application at: ${url}`]);
               } catch (error) {
                 addTerminalOutput(['Error during deployment:', error.message]);
               }

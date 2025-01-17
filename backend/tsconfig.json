@@ -3,16 +3,21 @@
   "compilerOptions": {
     "outDir": "../dist/backend",
     "rootDir": "../",
-    "module": "ESNext",
-    "target": "ES2020",
+    "module": "node16",
+    "target": "ES2022",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "strict": true,
-  "baseUrl": "../",
-  "paths": {
-    "@integrations/*": ["src/integrations/*"]
-  }
+    "noEmit": false,
+    "baseUrl": "../",
+    "paths": {
+      "@integrations/*": ["src/integrations/*"]
+    },
+    "types": ["node", "express"]
   },
   "include": ["**/*.ts", "../src/**/*.ts"],
   "exclude": ["node_modules"]

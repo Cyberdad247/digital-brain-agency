@@ -1,41 +1,33 @@
-import * as React from "react"
-import {
-  useFormContext,
-  FieldValues,
-  FieldPath,
-} from "react-hook-form"
+import * as React from 'react';
+import { useFormContext, FieldValues, FieldPath } from 'react-hook-form';
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
-  name: TName
-}
+  name: TName;
+};
 
-const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
-)
+const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue);
 
 type FormItemContextValue = {
-  id: string
-}
+  id: string;
+};
 
-const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
-)
+const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue);
 
 const useFormField = () => {
-  const fieldContext = React.useContext(FormFieldContext)
-  const itemContext = React.useContext(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
+  const fieldContext = React.useContext(FormFieldContext);
+  const itemContext = React.useContext(FormItemContext);
+  const { getFieldState, formState } = useFormContext();
 
-  const fieldState = getFieldState(fieldContext.name, formState)
+  const fieldState = getFieldState(fieldContext.name, formState);
 
   if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>")
+    throw new Error('useFormField should be used within <FormField>');
   }
 
-  const { id } = itemContext
+  const { id } = itemContext;
 
   return {
     id,
@@ -44,7 +36,7 @@ const useFormField = () => {
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
     ...fieldState,
-  }
-}
+  };
+};
 
-export { FormFieldContext, FormItemContext, useFormField }
+export { FormFieldContext, FormItemContext, useFormField };

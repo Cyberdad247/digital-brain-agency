@@ -19,8 +19,8 @@ const initialStructure: FileNode[] = [
         type: 'folder',
         children: [
           { name: 'Navigation.tsx', type: 'file' },
-          { name: 'Chatbot.tsx', type: 'file' }
-        ]
+          { name: 'Chatbot.tsx', type: 'file' },
+        ],
       },
       {
         name: 'pages',
@@ -33,32 +33,32 @@ const initialStructure: FileNode[] = [
             children: [
               { name: 'CodeEditor.tsx', type: 'file' },
               { name: 'ExtensionsPanel.tsx', type: 'file' },
-              { name: 'TerminalPanel.tsx', type: 'file' }
-            ]
-          }
-        ]
+              { name: 'TerminalPanel.tsx', type: 'file' },
+            ],
+          },
+        ],
       },
       { name: 'main.tsx', type: 'file' },
-      { name: 'App.tsx', type: 'file' }
-    ]
+      { name: 'App.tsx', type: 'file' },
+    ],
   },
   {
     name: 'public',
     type: 'folder',
     children: [
       { name: 'favicon.ico', type: 'file' },
-      { name: 'logo.jpg', type: 'file' }
-    ]
+      { name: 'logo.jpg', type: 'file' },
+    ],
   },
   { name: 'package.json', type: 'file' },
-  { name: 'tsconfig.json', type: 'file' }
+  { name: 'tsconfig.json', type: 'file' },
 ];
 
 export default function ProjectExplorer() {
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set());
 
   const toggleFolder = (path: string) => {
-    setExpandedFolders(prev => {
+    setExpandedFolders((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(path)) {
         newSet.delete(path);
@@ -90,18 +90,12 @@ export default function ProjectExplorer() {
                 <ChevronRight className="h-4 w-4" />
               )
             ) : null}
-            {isFolder ? (
-              <Folder className="h-4 w-4" />
-            ) : (
-              <File className="h-4 w-4" />
-            )}
+            {isFolder ? <Folder className="h-4 w-4" /> : <File className="h-4 w-4" />}
             <span>{node.name}</span>
           </Button>
 
           {isFolder && isExpanded && node.children && (
-            <div className="pl-4">
-              {renderTree(node.children, nodePath)}
-            </div>
+            <div className="pl-4">{renderTree(node.children, nodePath)}</div>
           )}
         </div>
       );
@@ -110,12 +104,10 @@ export default function ProjectExplorer() {
 
   return (
     <div className="h-full border-r">
-      <div className="p-2 border-b">
+      <div className="border-b p-2">
         <h2 className="text-sm font-semibold">PROJECT EXPLORER</h2>
       </div>
-      <ScrollArea className="h-[calc(100%-40px)]">
-        {renderTree(initialStructure)}
-      </ScrollArea>
+      <ScrollArea className="h-[calc(100%-40px)]">{renderTree(initialStructure)}</ScrollArea>
     </div>
   );
 }

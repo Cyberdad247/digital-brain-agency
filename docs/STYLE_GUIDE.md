@@ -1,6 +1,7 @@
 # Style Guide
 
 ## Coding Standards
+
 - Use TypeScript with strict type checking
 - Follow React best practices (functional components, hooks)
 - Use ESLint and Prettier for consistent formatting
@@ -9,15 +10,17 @@
 - Prefer named exports over default exports
 
 ## Naming Conventions
+
 - Components: PascalCase (e.g., Navigation.tsx)
 - Variables and functions: camelCase
 - Constants: UPPER_SNAKE_CASE
 - Interfaces: PascalCase with 'I' prefix (e.g., IUserData)
 - Type aliases: PascalCase with 'T' prefix (e.g., TApiResponse)
-- Test files: *.test.ts or *.spec.ts
-- Utility files: *.utils.ts
+- Test files: _.test.ts or _.spec.ts
+- Utility files: \*.utils.ts
 
 ## File Structure
+
 ```
 src/
   components/       # Reusable UI components
@@ -31,6 +34,7 @@ src/
 ```
 
 ## Documentation Practices
+
 - Add JSDoc comments for all public functions and components
 - Include prop types documentation using TypeScript interfaces
 - Document complex business logic with inline comments
@@ -38,6 +42,7 @@ src/
 - Use README.md for project overview and setup instructions
 
 ## Component Organization
+
 - Keep components small and focused
 - Follow single responsibility principle
 - Use prop-types or TypeScript interfaces for component props
@@ -46,6 +51,7 @@ src/
 - Prefer composition over inheritance
 
 ## Best Practices
+
 - Use functional components and hooks
 - Implement proper error boundaries
 - Use lazy loading for large components

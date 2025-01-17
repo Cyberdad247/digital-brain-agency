@@ -4,15 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Terminal, 
+import {
+  Terminal,
   ChevronRight,
   Bug,
   Play,
   Pause,
   StepForward,
   ListTree,
-  Variable
+  Variable,
 } from 'lucide-react';
 
 interface DebugState {
@@ -31,63 +31,63 @@ export default function TerminalPanel() {
     breakpoints: [],
     currentLine: null,
     variables: {},
-    callStack: []
+    callStack: [],
   });
   const [activeTab, setActiveTab] = useState('terminal');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const executeCommand = async (cmd: string) => {
     if (!cmd) return;
-    
-    setOutput(prev => [...prev, `$ ${cmd}`]);
+
+    setOutput((prev) => [...prev, `$ ${cmd}`]);
     setCommand('');
-    
+
     try {
       // Simulate command execution
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       // Simulate command output
       const result = `Command '${cmd}' executed successfully`;
-      setOutput(prev => [...prev, result]);
+      setOutput((prev) => [...prev, result]);
     } catch (error) {
-      setOutput(prev => [...prev, `Error: ${error.message}`]);
+      setOutput((prev) => [...prev, `Error: ${error.message}`]);
     }
   };
 
   const startDebugging = () => {
-    setDebugState(prev => ({
+    setDebugState((prev) => ({
       ...prev,
       isRunning: true,
-      currentLine: 1
+      currentLine: 1,
     }));
-    setOutput(prev => [...prev, 'Debugger started']);
+    setOutput((prev) => [...prev, 'Debugger started']);
   };
 
   const pauseDebugging = () => {
-    setDebugState(prev => ({
+    setDebugState((prev) => ({
       ...prev,
-      isRunning: false
+      isRunning: false,
     }));
-    setOutput(prev => [...prev, 'Debugger paused']);
+    setOutput((prev) => [...prev, 'Debugger paused']);
   };
 
   const stepThroughCode = () => {
-    setDebugState(prev => ({
+    setDebugState((prev) => ({
       ...prev,
-      currentLine: (prev.currentLine || 0) + 1
+      currentLine: (prev.currentLine || 0) + 1,
     }));
-    setOutput(prev => [...prev, `Stepping to line ${debugState.currentLine}`]);
+    setOutput((prev) => [...prev, `Stepping to line ${debugState.currentLine}`]);
   };
 
   const toggleBreakpoint = (lineNumber: number) => {
-    setDebugState(prev => {
+    setDebugState((prev) => {
       const breakpoints = prev.breakpoints.includes(lineNumber)
-        ? prev.breakpoints.filter(bp => bp !== lineNumber)
+        ? prev.breakpoints.filter((bp) => bp !== lineNumber)
         : [...prev.breakpoints, lineNumber];
-      
+
       return {
         ...prev,
-        breakpoints
+        breakpoints,
       };
     });
   };
@@ -96,19 +96,19 @@ export default function TerminalPanel() {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({
         top: scrollAreaRef.current.scrollHeight,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   }, [output]);
 
   return (
     <motion.div
-      className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border rounded-lg"
+      className="rounded-lg border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="p-4 border-b">
+      <div className="border-b p-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList>
             <TabsTrigger value="terminal" className="gap-2">
@@ -124,41 +124,29 @@ export default function TerminalPanel() {
       </div>
 
       {activeTab === 'debug' && (
-        <div className="p-4 border-b">
+        <div className="border-b p-4">
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              onClick={startDebugging}
-              disabled={debugState.isRunning}
-            >
-              <Play className="h-4 w-4 mr-2" />
+            <Button variant="outline" onClick={startDebugging} disabled={debugState.isRunning}>
+              <Play className="mr-2 h-4 w-4" />
               Start
             </Button>
-            <Button
-              variant="outline"
-              onClick={pauseDebugging}
-              disabled={!debugState.isRunning}
-            >
-              <Pause className="h-4 w-4 mr-2" />
+            <Button variant="outline" onClick={pauseDebugging} disabled={!debugState.isRunning}>
+              <Pause className="mr-2 h-4 w-4" />
               Pause
             </Button>
-            <Button
-              variant="outline"
-              onClick={stepThroughCode}
-              disabled={!debugState.isRunning}
-            >
-              <StepForward className="h-4 w-4 mr-2" />
+            <Button variant="outline" onClick={stepThroughCode} disabled={!debugState.isRunning}>
+              <StepForward className="mr-2 h-4 w-4" />
               Step
             </Button>
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4">
             <div>
-              <h4 className="flex items-center gap-2 mb-2 font-medium">
+              <h4 className="mb-2 flex items-center gap-2 font-medium">
                 <Variable className="h-4 w-4" />
                 Variables
               </h4>
-              <div className="text-sm space-y-1">
+              <div className="space-y-1 text-sm">
                 {Object.entries(debugState.variables).map(([name, value]) => (
                   <div key={name} className="flex gap-2">
                     <span className="font-medium">{name}:</span>
@@ -169,11 +157,11 @@ export default function TerminalPanel() {
             </div>
 
             <div>
-              <h4 className="flex items-center gap-2 mb-2 font-medium">
+              <h4 className="mb-2 flex items-center gap-2 font-medium">
                 <ListTree className="h-4 w-4" />
                 Call Stack
               </h4>
-              <div className="text-sm space-y-1">
+              <div className="space-y-1 text-sm">
                 {debugState.callStack.map((frame, index) => (
                   <div key={index}>{frame}</div>
                 ))}
@@ -186,14 +174,14 @@ export default function TerminalPanel() {
       <ScrollArea className="h-[300px] p-4" ref={scrollAreaRef}>
         <div className="space-y-1">
           {output.map((line, index) => (
-            <div key={index} className="text-sm font-mono">
+            <div key={index} className="font-mono text-sm">
               {line}
             </div>
           ))}
         </div>
       </ScrollArea>
 
-      <div className="p-4 border-t">
+      <div className="border-t p-4">
         <div className="flex items-center gap-2">
           <ChevronRight className="h-4 w-4 text-muted-foreground" />
           <Input
@@ -207,10 +195,7 @@ export default function TerminalPanel() {
               }
             }}
           />
-          <Button
-            onClick={() => executeCommand(command)}
-            disabled={!command}
-          >
+          <Button onClick={() => executeCommand(command)} disabled={!command}>
             Run
           </Button>
         </div>

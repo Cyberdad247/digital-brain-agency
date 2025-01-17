@@ -26,24 +26,24 @@ export default function DatabasePanel() {
   const addTable = () => {
     const newTable: TableSchema = {
       name: `table_${tables.length + 1}`,
-      columns: [
-        { name: 'id', type: 'integer', primaryKey: true }
-      ]
+      columns: [{ name: 'id', type: 'integer', primaryKey: true }],
     };
     setTables([...tables, newTable]);
   };
 
   const executeQuery = () => {
     // Simulate query execution
-    setQueryResult([{
-      id: 1,
-      message: 'Query executed successfully'
-    }]);
+    setQueryResult([
+      {
+        id: 1,
+        message: 'Query executed successfully',
+      },
+    ]);
   };
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="p-2 border-b">
+    <div className="flex h-full flex-col">
+      <div className="border-b p-2">
         <Tabs value={activeTab} onValueChange={(value: 'schema' | 'query') => setActiveTab(value)}>
           <TabsList>
             <TabsTrigger value="schema" className="gap-2">
@@ -67,8 +67,8 @@ export default function DatabasePanel() {
             </Button>
 
             {tables.map((table, index) => (
-              <div key={index} className="border rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-4">
+              <div key={index} className="rounded-lg border p-4">
+                <div className="mb-4 flex items-center gap-2">
                   <Table className="h-4 w-4" />
                   <h3 className="font-medium">{table.name}</h3>
                 </div>
@@ -107,8 +107,8 @@ export default function DatabasePanel() {
       )}
 
       {activeTab === 'query' && (
-        <div className="flex-1 flex flex-col">
-          <div className="p-4 border-b">
+        <div className="flex flex-1 flex-col">
+          <div className="border-b p-4">
             <div className="flex items-center gap-2">
               <Input
                 value={query}

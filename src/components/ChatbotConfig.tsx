@@ -41,38 +41,38 @@ interface ExtendedConfig {
 const config: ExtendedConfig = {
   initialMessages: [
     {
-      message: "Hello! How can I help you today?",
-      type: "bot",
+      message: 'Hello! How can I help you today?',
+      type: 'bot',
       id: 1,
-      widget: "options"
-    }
+      widget: 'options',
+    },
   ],
-  botName: "DigitalBrain",
+  botName: 'DigitalBrain',
   customStyles: {
     botMessageBox: {
-      backgroundColor: "#376B7E"
+      backgroundColor: '#376B7E',
     },
     chatButton: {
-      backgroundColor: "#376B7E"
-    }
+      backgroundColor: '#376B7E',
+    },
   },
   widgets: [
     {
-      widgetName: "options",
+      widgetName: 'options',
       widgetFunc: (props) => (
         <div className="space-y-2">
-          <button 
+          <button
             onClick={() => props.actionProvider.handleFAQ()}
-            className="block w-full text-left px-4 py-2 hover:bg-blue-50"
+            className="block w-full px-4 py-2 text-left hover:bg-blue-50"
           >
             View FAQs
           </button>
         </div>
       ),
       props: {},
-      mapStateToProps: []
-    }
-  ]
-}
+      mapStateToProps: [],
+    },
+  ],
+};
 
-export default config
+export default config;

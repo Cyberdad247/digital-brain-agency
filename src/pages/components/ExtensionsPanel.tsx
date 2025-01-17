@@ -21,21 +21,21 @@ export default function ExtensionsPanel() {
 
   const handleAddExtension = async () => {
     if (!newExtensionUrl) return;
-    
+
     setLoading(true);
     try {
       // Simulate extension loading
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const newExtension: Extension = {
         id: Math.random().toString(36).substring(7),
         name: 'New Extension',
         version: '1.0.0',
         description: 'Extension loaded from URL',
-        active: true
+        active: true,
       };
-      
-      setExtensions(prev => [...prev, newExtension]);
+
+      setExtensions((prev) => [...prev, newExtension]);
       setNewExtensionUrl('');
     } catch (error) {
       console.error('Failed to load extension:', error);
@@ -45,39 +45,30 @@ export default function ExtensionsPanel() {
   };
 
   const handleRemoveExtension = (id: string) => {
-    setExtensions(prev => prev.filter(ext => ext.id !== id));
+    setExtensions((prev) => prev.filter((ext) => ext.id !== id));
   };
 
   const handleToggleExtension = (id: string) => {
-    setExtensions(prev => 
-      prev.map(ext => 
-        ext.id === id ? { ...ext, active: !ext.active } : ext
-      )
+    setExtensions((prev) =>
+      prev.map((ext) => (ext.id === id ? { ...ext, active: !ext.active } : ext))
     );
   };
 
   return (
     <motion.div
-      className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border rounded-lg p-4"
+      className="rounded-lg border bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex items-center gap-2 mb-4">
+      <div className="mb-4 flex items-center gap-2">
         <Input
           placeholder="Enter extension URL..."
           value={newExtensionUrl}
           onChange={(e) => setNewExtensionUrl(e.target.value)}
         />
-        <Button
-          onClick={handleAddExtension}
-          disabled={loading || !newExtensionUrl}
-        >
-          {loading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Plus className="h-4 w-4" />
-          )}
+        <Button onClick={handleAddExtension} disabled={loading || !newExtensionUrl}>
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
         </Button>
       </div>
 
@@ -87,7 +78,7 @@ export default function ExtensionsPanel() {
             {extensions.map((ext) => (
               <motion.div
                 key={ext.id}
-                className="flex items-center justify-between p-2 border rounded-lg"
+                className="flex items-center justify-between rounded-lg border p-2"
                 whileHover={{ scale: 1.01 }}
               >
                 <div className="flex-1">
@@ -98,23 +89,13 @@ export default function ExtensionsPanel() {
                       {ext.active ? 'Active' : 'Inactive'}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    {ext.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{ext.description}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => handleToggleExtension(ext.id)}
-                  >
+                  <Button variant="ghost" size="sm" onClick={() => handleToggleExtension(ext.id)}>
                     {ext.active ? 'Disable' : 'Enable'}
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => handleRemoveExtension(ext.id)}
-                  >
+                  <Button variant="ghost" size="sm" onClick={() => handleRemoveExtension(ext.id)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
@@ -122,9 +103,7 @@ export default function ExtensionsPanel() {
             ))}
           </div>
         ) : (
-          <div className="text-center text-muted-foreground py-4">
-            No extensions installed
-          </div>
+          <div className="py-4 text-center text-muted-foreground">No extensions installed</div>
         )}
       </ScrollArea>
     </motion.div>

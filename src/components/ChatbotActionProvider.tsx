@@ -32,7 +32,7 @@ class ActionProvider extends React.Component<ActionProviderProps> {
     const botMessage = this.props.createChatBotMessage(message);
     this.props.setState((prev: ChatState) => ({
       ...prev,
-      messages: isNewQuery ? [botMessage] : [...prev.messages, botMessage]
+      messages: isNewQuery ? [botMessage] : [...prev.messages, botMessage],
     }));
   };
 
@@ -43,8 +43,8 @@ class ActionProvider extends React.Component<ActionProviderProps> {
           if (React.isValidElement<ActionProviderChildProps>(child)) {
             return React.cloneElement<ActionProviderChildProps>(child, {
               actions: {
-                handleResponse: this.handleResponse
-              }
+                handleResponse: this.handleResponse,
+              },
             });
           }
           return child;

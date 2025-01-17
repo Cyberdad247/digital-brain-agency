@@ -65,17 +65,22 @@ This project is built with modern web technologies:
 ## How can I deploy this project?
 
 **Using Lovable**
+
 - Open [Lovable](https://lovable.dev/projects/3a687ab7-9e0d-43e3-a3c2-8ea133f55e56)
 - Click on Share -> Publish
 
 **Local Deployment**
+
 1. Build the project:
+
 ```sh
 npm run build
 ```
+
 2. Deploy the generated `dist` folder to your preferred hosting provider (Vercel, Netlify, etc.)
 
 **Features**
+
 - Customizable AI chatbot with multiple personas
 - Supabase-powered backend
 - Responsive UI components

@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 export const ContactForm = () => {
   const { toast } = useToast();
@@ -9,17 +9,17 @@ export const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message sent!",
+      title: 'Message sent!',
       description: "We'll get back to you as soon as possible.",
     });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
       <div>
         <Input
           placeholder="Your Name"
-          className="bg-background/50 border-secondary/20 text-white"
+          className="border-secondary/20 bg-background/50 text-white"
           required
         />
       </div>
@@ -27,14 +27,14 @@ export const ContactForm = () => {
         <Input
           type="email"
           placeholder="Your Email"
-          className="bg-background/50 border-secondary/20 text-white"
+          className="border-secondary/20 bg-background/50 text-white"
           required
         />
       </div>
       <div>
         <Textarea
           placeholder="Your Message"
-          className="bg-background/50 border-secondary/20 text-white min-h-[150px]"
+          className="min-h-[150px] border-secondary/20 bg-background/50 text-white"
           required
         />
       </div>

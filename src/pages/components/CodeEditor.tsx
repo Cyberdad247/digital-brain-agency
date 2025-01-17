@@ -5,9 +5,9 @@ import Editor from '@monaco-editor/react';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { TriangleAlert, Play, LayoutTemplate } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 interface Template {
   id: string;
@@ -30,7 +30,7 @@ interface CodeEditorProps {
   onCodeChange: (code: string) => void;
   onRunCode: (code: string) => Promise<void>;
   diagnostics: Diagnostic[];
-  addTerminalOutput: (output: (string | {message: string})[]) => void;
+  addTerminalOutput: (output: (string | { message: string })[]) => void;
 }
 
 const TEMPLATES: Template[] = [
@@ -50,7 +50,7 @@ print(df.describe())
 # Create visualization
 df.plot(kind='bar', x='category', y='value')
 plt.show()`,
-    language: 'python'
+    language: 'python',
   },
   {
     id: 'web-dev',
@@ -66,7 +66,7 @@ function MyComponent() {
     </div>
   );
 }`,
-    language: 'typescript'
+    language: 'typescript',
   },
   {
     id: 'game-dev',
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour {
         transform.Translate(0, 0, move);
     }
 }`,
-    language: 'csharp'
+    language: 'csharp',
   },
   {
     id: 'api-integration',
@@ -99,7 +99,7 @@ async function fetchData() {
     console.error('Error:', error);
   }
 }`,
-    language: 'typescript'
+    language: 'typescript',
   },
   {
     id: 'automation',
@@ -117,7 +117,7 @@ function processFiles(directory) {
     });
   });
 }`,
-    language: 'javascript'
+    language: 'javascript',
   },
   {
     id: 'simulations',
@@ -138,15 +138,15 @@ function monteCarlo(iterations) {
   
   return 4 * inside / iterations;
 }`,
-    language: 'javascript'
-  }
+    language: 'javascript',
+  },
 ];
 
 export default function CodeEditor({
   onCodeChange,
   onRunCode,
   diagnostics,
-  addTerminalOutput
+  addTerminalOutput,
 }: CodeEditorProps) {
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [code, setCode] = useState(`function hello() {\n  console.log('Hello world!');\n}`);
@@ -160,12 +160,12 @@ export default function CodeEditor({
       moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
       module: monaco.languages.typescript.ModuleKind.ESNext,
       noEmit: true,
-      typeRoots: ["node_modules/@types"],
+      typeRoots: ['node_modules/@types'],
       jsx: monaco.languages.typescript.JsxEmit.React,
       strict: true,
       esModuleInterop: true,
       skipLibCheck: true,
-      forceConsistentCasingInFileNames: true
+      forceConsistentCasingInFileNames: true,
     });
 
     // Configure HTML
@@ -182,11 +182,11 @@ export default function CodeEditor({
         preserveNewLines: true,
         maxPreserveNewLines: 2,
         indentHandlebars: false,
-        extraLiners: 'head,body,/html'
+        extraLiners: 'head,body,/html',
       },
       suggest: {
-        html5: true
-      }
+        html5: true,
+      },
     });
 
     // Configure CSS
@@ -210,22 +210,22 @@ export default function CodeEditor({
         propertyIgnoredDueToDisplay: 'warning',
         important: 'ignore',
         float: 'ignore',
-        idSelector: 'ignore'
-      }
+        idSelector: 'ignore',
+      },
     });
 
     // Configure SQL
     monaco.languages.register({
       id: 'sql',
       extensions: ['.sql'],
-      aliases: ['SQL', 'sql']
+      aliases: ['SQL', 'sql'],
     });
 
     // Configure PowerShell
     monaco.languages.register({
       id: 'powershell',
       extensions: ['.ps1'],
-      aliases: ['PowerShell', 'powershell', 'ps']
+      aliases: ['PowerShell', 'powershell', 'ps'],
     });
 
     // Add type definitions and completions for common libraries
@@ -257,7 +257,7 @@ export default function CodeEditor({
               startLineNumber: position.lineNumber,
               endLineNumber: position.lineNumber,
               startColumn: word.startColumn,
-              endColumn: word.endColumn
+              endColumn: word.endColumn,
             };
 
             return {
@@ -268,39 +268,40 @@ export default function CodeEditor({
                   insertText: 'console.log(${1:value})',
                   insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                   detail: 'Console log statement',
-                  range: range
+                  range: range,
                 },
                 {
                   label: 'fetch',
                   kind: monaco.languages.CompletionItemKind.Function,
-                  insertText: 'fetch(\'${1:url}\')',
+                  insertText: "fetch('${1:url}')",
                   insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                   detail: 'Fetch API call',
-                  range: range
+                  range: range,
                 },
                 {
                   label: 'useState',
                   kind: monaco.languages.CompletionItemKind.Function,
-                  insertText: 'const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialValue})',
+                  insertText:
+                    'const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initialValue})',
                   insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                   detail: 'React useState hook',
-                  range: range
-                }
-              ]
+                  range: range,
+                },
+              ],
             } as monaco.languages.CompletionList;
-          }
+          },
         });
 
         // Enable semantic highlighting
         monaco.languages.registerDocumentSemanticTokensProvider('typescript', {
           getLegend: () => ({
             tokenTypes: ['variable', 'function', 'class', 'interface'],
-            tokenModifiers: []
+            tokenModifiers: [],
           }),
           provideDocumentSemanticTokens: (model) => {
             const tokens = [];
             const lines = model.getLinesContent();
-            
+
             lines.forEach((line, lineNumber) => {
               const words = line.split(/\W+/);
               words.forEach((word) => {
@@ -314,10 +315,10 @@ export default function CodeEditor({
 
             return {
               data: new Uint32Array(tokens),
-              resultId: null
+              resultId: null,
             };
           },
-          releaseDocumentSemanticTokens: () => {}
+          releaseDocumentSemanticTokens: () => {},
         });
       } catch (error) {
         console.error('Error configuring editor:', error);
@@ -329,12 +330,12 @@ export default function CodeEditor({
 
   return (
     <motion.div
-      className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border rounded-lg flex"
+      className="flex rounded-lg border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       whileHover={{ scale: 1.01 }}
     >
       {showTemplates && (
         <div className="w-1/4 border-r p-4">
-          <h2 className="text-lg font-semibold mb-4 flex items-center">
+          <h2 className="mb-4 flex items-center text-lg font-semibold">
             <LayoutTemplate className="mr-2 h-5 w-5" />
             Code Templates
           </h2>
@@ -344,12 +345,12 @@ export default function CodeEditor({
                 <TabsTrigger value="data-analysis">Analysis</TabsTrigger>
                 <TabsTrigger value="development">Development</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="data-analysis">
-                {TEMPLATES.filter(t => t.id === 'data-analysis').map(template => (
-                  <Card 
+                {TEMPLATES.filter((t) => t.id === 'data-analysis').map((template) => (
+                  <Card
                     key={template.id}
-                    className="mb-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                    className="mb-4 cursor-pointer transition-colors hover:bg-accent/50"
                     onClick={() => {
                       setCode(template.code);
                       onCodeChange(template.code);
@@ -371,10 +372,10 @@ export default function CodeEditor({
               </TabsContent>
 
               <TabsContent value="development">
-                {TEMPLATES.filter(t => t.id !== 'data-analysis').map(template => (
-                  <Card 
+                {TEMPLATES.filter((t) => t.id !== 'data-analysis').map((template) => (
+                  <Card
                     key={template.id}
-                    className="mb-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                    className="mb-4 cursor-pointer transition-colors hover:bg-accent/50"
                     onClick={() => {
                       setCode(template.code);
                       onCodeChange(template.code);
@@ -398,7 +399,7 @@ export default function CodeEditor({
           </ScrollArea>
         </div>
       )}
-      
+
       <div className={`h-[600px] ${showTemplates ? 'w-3/4' : 'w-full'}`}>
         <Editor
           theme="vs-dark"
@@ -429,21 +430,17 @@ export default function CodeEditor({
             folding: true,
             lightbulb: { enabled: monaco.editor.ShowLightbulbIconMode.On },
             matchBrackets: 'always',
-            wordWrap: 'on'
+            wordWrap: 'on',
           }}
         />
       </div>
-      <div className="p-4 border-t flex justify-between items-center">
+      <div className="flex items-center justify-between border-t p-4">
         <div>
-          <Button 
-            variant="ghost" 
-            className="mr-2"
-            onClick={() => setShowTemplates(!showTemplates)}
-          >
+          <Button variant="ghost" className="mr-2" onClick={() => setShowTemplates(!showTemplates)}>
             <LayoutTemplate className="mr-2 h-4 w-4" />
             {showTemplates ? 'Hide' : 'Show'} Templates
           </Button>
-          <Button 
+          <Button
             className="mr-2"
             onClick={async () => {
               addTerminalOutput(['$ Running code...', 'Executing script...']);

@@ -7,10 +7,7 @@ const config: Config.InitialOptions = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testMatch: [
-    '**/__tests__/**/*.test.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[jt]s?(x)'
-  ],
+  testMatch: ['**/__tests__/**/*.test.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
@@ -24,7 +21,7 @@ const config: Config.InitialOptions = {
     '/.next/',
     '/.vscode/',
     '/public/',
-    '/coverage/'
+    '/coverage/',
   ],
 };
 
