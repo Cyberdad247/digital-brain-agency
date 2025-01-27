@@ -1,0 +1,43 @@
+/* Mobile-first responsive styles for card component */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (max-width: 640px) {
+  .card {
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .card {
+    margin: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@media (min-width: 1025px) {
+  .card {
+    margin: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}

@@ -1,0 +1,7 @@
+superagi
+supabase
+lancedb
+pandas
+numpy
+requests
+python-dotenv

@@ -42,6 +42,7 @@ export const Navigation = () => {
     { name: 'Playground', href: '/playground' },
     { name: 'Web Analysis', href: '/web-analysis' },
     { name: 'Email Marketing', href: '/email-marketing' },
+    { name: 'SEO', href: '/seo' },
     { name: 'AI Strategy', href: '/ai-strategy' },
     { name: 'Data Analytics', href: '/data-analytics' },
   ];

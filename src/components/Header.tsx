@@ -1,6 +1,10 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import './Navigation.css';
 import styles from './Hero.module.css';
+import { ResponsiveModal, ResponsiveModalTrigger, ResponsiveModalContent } from './ui/modal.tsx';
+import { LoginForm } from './auth/LoginForm';
 
 const Header = () => {
   return (
@@ -20,6 +24,21 @@ const Header = () => {
           <div className={styles.heroText}>
             <h1>Digital Brain Agency</h1>
             <p>Transforming Visions into Digital Reality</p>
+          </div>
+          
+          <div className={styles.heroActions}>
+            <ResponsiveModal>
+              <ResponsiveModalTrigger asChild>
+                <button className={styles.ctaButton}>
+                  Get Started
+                </button>
+              </ResponsiveModalTrigger>
+              <ResponsiveModalContent side="bottom">
+                <div className={styles.modalContent}>
+                  <LoginForm />
+                </div>
+              </ResponsiveModalContent>
+            </ResponsiveModal>
           </div>
           
           <div className={styles.heroIcons}>

@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Sidebar } from '../ui/sidebar';
 import Header from '../Header';
 import { Toaster } from '../ui/toaster';
+import { UserProfileCard } from './UserProfileCard';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -22,8 +23,13 @@ const DashboardLayout = ({ children, title, description }: DashboardLayoutProps)
               <p className="text-muted-foreground mt-2">{description}</p>
             )}
           </div>
-          <div className="space-y-8">
-            {children}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              {children}
+            </div>
+            <div className="lg:col-span-1 space-y-8">
+              <UserProfileCard />
+            </div>
           </div>
         </main>
       </div>
