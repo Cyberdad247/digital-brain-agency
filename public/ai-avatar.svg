@@ -1,0 +1,15 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" fill="#0a0a0f" opacity="0.1"/>
+  <g transform="translate(100, 100) scale(0.75)">
+    <!-- Silhouette -->
+    <path d="M400 200 Q450 180 480 220 Q520 260 520 320 Q520 380 480 420 Q450 450 400 450 Q350 450 320 420 Q280 380 280 320 Q280 260 320 220 Q350 180 400 200 Z" fill="#111" />
+    <!-- Hair -->
+    <path d="M320 220 Q350 150 400 150 Q450 150 480 220 Q500 180 480 140 Q450 100 400 80 Q350 100 320 140 Q300 180 320 220 Z" fill="#111" />
+    <!-- Glasses -->
+    <path d="M340 260 Q330 260 330 270 Q330 280 340 280 Q350 280 350 270 Q350 260 340 260 Z" fill="none" stroke="#333" stroke-width="3" />
+    <path d="M460 260 Q450 260 450 270 Q450 280 460 280 Q470 280 470 270 Q470 260 460 260 Z" fill="none" stroke="#333" stroke-width="3" />
+    <path d="M350 270 L450 270" stroke="#333" stroke-width="3" />
+    <circle cx="340" cy="270" r="20" fill="none" stroke="#333" stroke-width="3" />
+    <circle cx="460" cy="270" r="20" fill="none" stroke="#333" stroke-width="3" />
+  </g>
+</svg>
