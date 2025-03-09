@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Analysis Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        #error-alert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .last-update {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .refresh-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .auto-refresh-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #222;
+            color: #f8f9fa;
+        }
+        
+        body.dark-mode .card {
+            background-color: #333;
+            border-color: #444;
+        }
+        
+        body.dark-mode .card-header {
+            background-color: #444;
+            border-color: #555;
+        }
+        
+        body.dark-mode .bg-light {
+            background-color: #444 !important;
+            color: #f8f9fa;
+        }
+        
+        body.dark-mode .table {
+            color: #f8f9fa;
+        }
+        
+        body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        body.dark-mode .form-control,
+        body.dark-mode .form-select {
+            background-color: #444;
+            border-color: #555;
+            color: #f8f9fa;
+        }
+        
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+        
+        .theme-switch-icon {
+            font-size: 1.2rem;
+            margin-right: 5px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="error-alert" class="alert alert-danger alert-dismissible fade show">
+        <strong>Error!</strong> <span id="error-message"></span>
+        <button type="button" class="btn-close" onclick="hideError()"></button>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Data Analysis Dashboard</a>
+            <div class="d-flex">
+                <div class="theme-switch">
+                    <span class="theme-switch-icon">☀️</span>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="theme-toggle">
+                    </div>
+                    <span class="theme-switch-icon">🌙</span>
+                </div>
+                <div class="refresh-controls">
+                    <div class="auto-refresh-toggle">
+                        <input type="checkbox" id="auto-refresh" class="form-check-input" checked>
+                        <label class="text-light" for="auto-refresh">Auto-refresh</label>
+                    </div>
+                    <select id="refresh-interval" class="form-select form-select-sm" style="width: auto;">
+                        <option value="60000">1 minute</option>
+                        <option value="300000" selected>5 minutes</option>
+                        <option value="600000">10 minutes</option>
+                    </select>
+                    <button id="refresh-btn" class="btn btn-light" onclick="refreshData()">
+                        <span id="refresh-text">Refresh Data</span>
+                        <span id="loading-spinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add this after the navbar -->
+    <div class="container mt-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="last-update"></span>
+            <div class="btn-group">
+                <button class="btn btn-outline-primary" onclick="exportData('csv')">Export CSV</button>
+                <button class="btn btn-outline-primary" onclick="exportData('excel')">Export Excel</button>
+                <button class="btn btn-outline-primary" onclick="downloadReport()">Download Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add these functions to your script section -->
+    <script>
+        let refreshInterval;
+        let lastUpdateTime = new Date();
+
+        function updateLastRefreshTime() {
+            lastUpdateTime = new Date();
+            $('.last-update').text(`Last updated: ${lastUpdateTime.toLocaleString()}`);
+        }
+
+        function showError(message) {
+            $('#error-message').text(message);
+            $('#error-alert').fadeIn();
+            setTimeout(() => $('#error-alert').fadeOut(), 5000);
+        }
+
+        function hideError() {
+            $('#error-alert').fadeOut();
+        }
+
+        function setLoading(isLoading) {
+            const btn = $('#refresh-btn');
+            const spinner = $('#loading-spinner');
+            const text = $('#refresh-text');
+            
+            if (isLoading) {
+                btn.addClass('loading');
+                spinner.removeClass('d-none');
+                text.addClass('d-none');
+            } else {
+                btn.removeClass('loading');
+                spinner.addClass('d-none');
+                text.removeClass('d-none');
+            }
+        }
+
+        function refreshData() {
+            setLoading(true);
+            $.ajax({
+                url: '/refresh-data',
+                method: 'GET',
+                timeout: 30000, // 30 second timeout
+                success: function(response) {
+                    $('#validation-report').text(JSON.stringify(response.validation, null, 2));
+                    $('#analysis-report').text(response.analysis);
+                    document.querySelectorAll('iframe').forEach(frame => frame.contentWindow.location.reload());
+                    updateLastRefreshTime();
+                },
+                error: function(xhr, status, error) {
+                    let errorMsg = 'Failed to refresh data';
+                    if (status === 'timeout') {
+                        errorMsg = 'Request timed out. Server might be busy.';
+                    } else if (xhr.status === 0) {
+                        errorMsg = 'Cannot connect to server. Please check your connection.';
+                    } else {
+                        errorMsg += `: ${error}`;
+                    }
+                    showError(errorMsg);
+                },
+                complete: function() {
+                    setLoading(false);
+                }
+            });
+        }
+
+        function setupAutoRefresh() {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+            if ($('#auto-refresh').is(':checked')) {
+                const interval = parseInt($('#refresh-interval').val());
+                refreshInterval = setInterval(refreshData, interval);
+            }
+        }
+
+        // Event listeners
+        $('#auto-refresh').change(setupAutoRefresh);
+        $('#refresh-interval').change(setupAutoRefresh);
+
+        // Initialize
+        $(document).ready(function() {
+            updateLastRefreshTime();
+            setupAutoRefresh();
+            
+            // Add keyboard shortcuts
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'r') {
+                    e.preventDefault();
+                    refreshData();
+                }
+            });
+        });
+    </script>
+    <div class="container mt-5">
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>Interactive Visualizations</h3>
+                    </div>
+                    <div class="card-body">
+                        <iframe src="/visualizations/interactive_timeseries.html" width="100%" height="400px"></iframe>
+                        <iframe src="/visualizations/interactive_correlation.html" width="100%" height="400px"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>Validation Report</h3>
+                    </div>
+                    <div class="card-body">
+                        <pre class="bg-light p-3" id="validation-report">{{ reports.validation | tojson(indent=2) }}</pre>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Analysis Report</h3>
+                    </div>
+                    <div class="card-body">
+                        <pre class="bg-light p-3" id="analysis-report">{{ reports.analysis }}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Move these functions inside the script tag
+        function exportData(format) {
+            window.location.href = `/export-data?format=${format}`;
+        }
+
+        function downloadReport() {
+            const content = {
+                validation: JSON.parse($('#validation-report').text()),
+                analysis: $('#analysis-report').text()
+            };
+            
+            const blob = new Blob([JSON.stringify(content, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `analysis-report-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>

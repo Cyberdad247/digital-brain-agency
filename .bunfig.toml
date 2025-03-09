@@ -1,0 +1,7 @@
+[install]
+registry = "https://registry.npmjs.org/"
+globalDir = "C:\\Users\\vizio\\.bun\\install\\global"
+globalBinDir = "C:\\Users\\vizio\\.bun\\bin"
+
+[log]
+level = "info"

@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ChatHistory {
+  id        String   @id @default(uuid())
+  message   String
+  response  String
+  timestamp DateTime @default(now())
+}
+
+model AgencyMetric {
+  id      String @id @default(uuid())
+  label   String
+  value   Int
+  context String
+}

@@ -1,0 +1,38 @@
+{
+  "name": "digital-brain-agency",
+  "dockerFile": "Dockerfile",
+  "forwardPorts": [3000, 5432],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode.js-debug",
+    "streetsidesoftware.code-spell-checker",
+    "eamodio.gitlens",
+    "github.copilot"
+  ],
+  "postCreateCommand": "bun install",
+  "remoteUser": "node",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+.resource-list {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin: 2rem;
+}
+
+.resource-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+
+.resource-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1a1a1a;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.resource-table td {
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.resource-table tr:hover td {
+  background: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.actions-cell {
+  text-align: right;
+}
+
+.action-button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.action-button.edit {
+  background: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.action-button.edit:hover {
+  background: #0056b3;
+  border-color: #0056b3;
+}
+
+.action-button.delete {
+  background: #dc3545;
+  color: white;
+  border: 1px solid #dc3545;
+}
+
+.action-button.delete:hover {
+  background: #c82333;
+  border-color: #c82333;
+}
+
+@media (max-width: 768px) {
+  .resource-list {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .resource-table th,
+  .resource-table td {
+    padding: 0.75rem;
+  }
+
+  .action-button {
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.25rem;
+  }
+}

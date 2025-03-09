@@ -1,0 +1,70 @@
+.sidebarWrapper {
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+}
+
+.sidebarContainer {
+  height: 100svh;
+  width: var(--sidebar-width);
+  background-color: transparent;
+  transition: width 200ms linear;
+}
+
+.sidebarContainerIcon {
+  width: var(--sidebar-width-icon);
+}
+
+.sidebarContainerOffcanvas {
+  width: 0;
+}
+
+.sidebarFixed {
+  position: fixed;
+  inset-block: 0;
+  z-index: 10;
+  height: 100svh;
+  width: var(--sidebar-width);
+  transition: left 200ms linear, right 200ms linear, width 200ms linear;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .sidebarFixed {
+    display: flex;
+  }
+}
+
+.sidebarFixedLeft {
+  left: 0;
+}
+
+.sidebarFixedRight {
+  right: 0;
+}
+
+.sidebarFixedOffcanvasLeft {
+  left: calc(var(--sidebar-width) * -1);
+}
+
+.sidebarFixedOffcanvasRight {
+  right: calc(var(--sidebar-width) * -1);
+}
+
+.sidebarFixedIcon {
+  width: calc(var(--sidebar-width-icon) + theme(spacing.4) + 2px);
+}
+
+.sidebarContent {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.sidebarContentFloating,
+.sidebarContentInset {
+  border-radius: 0.5rem;
+  border: 1px solid var(--sidebar-border);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}

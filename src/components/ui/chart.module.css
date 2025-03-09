@@ -1,0 +1,67 @@
+.chartContainer {
+  flex: 1;
+  aspect-ratio: 16/9;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.chartContainer :global(.recharts-cartesian-axis-tick_text) {
+  fill: var(--muted-foreground);
+}
+
+.chartContainer :global(.recharts-cartesian-grid_line[stroke='#ccc']) {
+  stroke: var(--border);
+  opacity: 0.5;
+}
+
+.chartContainer :global(.recharts-curve.recharts-tooltip-cursor) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-dot[stroke='#fff']) {
+  stroke: transparent;
+}
+
+.chartContainer :global(.recharts-layer) {
+  outline: none;
+}
+
+.chartContainer :global(.recharts-polar-grid_[stroke='#ccc']) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-radial-bar-background-sector) {
+  fill: var(--muted);
+}
+
+.chartContainer :global(.recharts-rectangle.recharts-tooltip-cursor) {
+  fill: var(--muted);
+}
+
+.chartContainer :global(.recharts-reference-line_[stroke='#ccc']) {
+  stroke: var(--border);
+}
+
+.chartContainer :global(.recharts-sector[stroke='#fff']) {
+  stroke: transparent;
+}
+
+.chartContainer :global(.recharts-sector) {
+  outline: none;
+}
+
+.chartContainer :global(.recharts-surface) {
+  outline: none;
+}
+
+.chartIndicator {
+  background-color: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+.chartLegendIcon {
+  height: 0.5rem;
+  width: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 2px;
+}

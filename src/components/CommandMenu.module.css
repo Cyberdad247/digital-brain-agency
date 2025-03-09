@@ -1,0 +1,51 @@
+.commandMenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  background: var(--background);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.commandInput {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.commandList {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.agentItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.department {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.icon {
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+:global(.dark) .commandMenu {
+  background: var(--background-dark);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,15 @@
+service: my-service
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  hello:
+    handler: api/handler
+    package:
+      include:
+        - 'api/*.{js,ts}'
+  myFunction:
+    handler: handler.myFunction
+    runtime: now-php@1.0.0
+# ...existing configuration...
