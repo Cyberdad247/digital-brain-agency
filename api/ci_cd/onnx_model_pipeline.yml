@@ -1,0 +1,159 @@
+name: ONNX Model CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'api/**'
+      - 'models/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'api/**'
+      - 'models/**'
+  workflow_dispatch:
+    inputs:
+      model_version:
+        description: 'Version to tag the model with (e.g., 1.0.0)'
+        required: true
+        default: ''
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r api/requirements.txt
+          pip install pytest pytest-cov
+      
+      - name: Run tests
+        run: |
+          pytest tests/integration/test_predict_api.py -v
+  
+  build_model:
+    name: Build and Version ONNX Model
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r api/requirements.txt
+      
+      - name: Register new model version
+        run: |
+          mkdir -p api/models
+          python -c "
+          import json
+          import os
+          
+          # Get model version from input
+          model_version = '${{ github.event.inputs.model_version }}'
+          
+          # Path to model registry
+          registry_path = 'api/models/model_registry.json'
+          
+          # Create registry if it doesn't exist
+          if not os.path.exists(registry_path):
+              with open(registry_path, 'w') as f:
+                  json.dump({'models': []}, f)
+          
+          # Load existing registry
+          with open(registry_path, 'r') as f:
+              registry = json.load(f)
+          
+          # Add new model version
+          model_path = f'api/models/model_v{model_version}.onnx'
+          
+          # Check if model version already exists
+          for model in registry['models']:
+              if model['version'] == model_version:
+                  print(f'Model version {model_version} already exists')
+                  exit(1)
+          
+          # Add new model
+          registry['models'].append({
+              'version': model_version,
+              'path': model_path,
+              'metadata': {
+                  'description': f'Model version {model_version}',
+                  'created_at': '$(date -u +"%Y-%m-%dT%H:%M:%SZ")'
+              },
+              'active': True
+          })
+          
+          # Save updated registry
+          with open(registry_path, 'w') as f:
+              json.dump(registry, f, indent=2)
+          
+          print(f'Registered model version {model_version}')
+          "
+      
+      - name: Upload model registry
+        uses: actions/upload-artifact@v3
+        with:
+          name: model-registry
+          path: api/models/model_registry.json
+  
+  deploy:
+    name: Deploy API and Models
+    needs: [test, build_model]
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Download model registry
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/download-artifact@v3
+        with:
+          name: model-registry
+          path: api/models/
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      
+      - name: Deploy with Terraform
+        run: |
+          cd terraform
+          terraform init
+          terraform validate
+          terraform apply -auto-approve
+      
+      - name: Deploy API
+        run: |
+          # This step would deploy the API to your hosting environment
+          # For example, using AWS ECS, Kubernetes, or other deployment targets
+          echo "Deploying API to production environment"
+          
+          # Example deployment command (replace with actual deployment)
+          # aws ecs update-service --cluster your-cluster --service your-service --force-new-deployment
