@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorLogger } from './ErrorLogger';
 import { LoggingService } from './LoggingService';
 import { ErrorAnalyticsService } from './ErrorAnalyticsService';
@@ -30,46 +32,69 @@ export class ErrorMonitoringService {
     return ErrorMonitoringService.instance;
   }
 
-  public async captureError(error: Error, metadata?: Partial<ErrorMetadata>): Promise<void> {
-    const errorMetadata: ErrorMetadata = {
+  private createErrorMetadata(metadata?: Partial<ErrorMetadata>): ErrorMetadata {
+    const defaultMetadata: ErrorMetadata = {
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || 'development',
       ...metadata,
     };
 
-    // Log to all services for comprehensive error tracking
-    await Promise.all([
-      this.loggingService.logError(error, {
-        level: 'error',
-        context: 'error-monitoring',
-        metadata: errorMetadata,
-      }),
-      this.errorLogger.logError(error, JSON.stringify(errorMetadata)),
-    ]);
+    // Validate metadata
+    if (defaultMetadata.environment !== 'development' && defaultMetadata.environment !== 'production') {
+      throw new Error('Invalid environment value');
+    }
+
+    return defaultMetadata;
+  }
+
+  private async logToServices(error: Error, metadata: ErrorMetadata): Promise<void> {
+    try {
+      await Promise.all([
+        this.loggingService.logError(error, {
+          level: 'error',
+          context: 'error-monitoring',
+          metadata,
+        }),
+        this.errorLogger.logError(error, JSON.stringify(metadata)),
+      ]);
+    } catch (logError) {
+      console.error('Error during logging:', logError);
+    }
+  }
+
+  public async captureError(error: Error, metadata?: Partial<ErrorMetadata>): Promise<void> {
+    const errorMetadata = this.createErrorMetadata(metadata);
+    await this.logToServices(error, errorMetadata);
 
     // Analyze the error for trends and patterns
-    const analytics = this.errorAnalytics.analyzeError(error, errorMetadata.componentStack);
+    try {
+      const analytics = this.errorAnalytics.analyzeError(error, errorMetadata.componentStack);
+      // Handle analytics result if necessary
+    } catch (analyticsError) {
+      console.error('Error during analysis:', analyticsError);
+    }
   }
 
   public async captureWarning(message: string, metadata?: Partial<ErrorMetadata>): Promise<void> {
+    const warningMetadata = this.createErrorMetadata(metadata);
     await this.loggingService.logWarning(message, {
       level: 'warn',
       context: 'error-monitoring',
-      metadata,
+      metadata: warningMetadata,
     });
   }
 
   public async captureInfo(message: string, metadata?: Partial<ErrorMetadata>): Promise<void> {
+    const infoMetadata = this.createErrorMetadata(metadata);
     await this.loggingService.logInfo(message, {
       level: 'info',
       context: 'error-monitoring',
-      metadata,
+      metadata: infoMetadata,
     });
   }
 
   public getBrowserErrorMetadata(): Partial<ErrorMetadata> {
     if (typeof window === 'undefined') return {};
-
     return {
       userAgent: window.navigator.userAgent,
       url: window.location.href,

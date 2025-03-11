@@ -3,19 +3,18 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   output: 'standalone',
   experimental: {
-    outputFileTracingRoot: path.join(__dirname, '../../'),
-    serverComponentsExternalPackages: ['@prisma/client', 'bcrypt'],
-    optimizeCss: true,
-    optimizePackageImports: ['@radix-ui/react-*']
+    outputFileTracingRoot: path.join(__dirname, '../../')
   },
+  serverExternalPackages: ['@prisma/client', 'bcrypt'],
+  optimizeCss: true,
+  optimizePackageImports: ['@radix-ui/react-*'],
   images: {
     domains: ['localhost', '*.vercel.app'],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
   },
   async headers() {
     return [
@@ -24,30 +23,29 @@ const nextConfig = {
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on',
+            value: 'on'
           },
           {
             key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
+            value: 'max-age=63072000; includeSubDomains; preload'
           },
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
+            value: 'SAMEORIGIN'
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: 'nosniff'
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
+            value: 'origin-when-cross-origin'
+          }
+        ]
+      }
     ];
   },
   compress: true,
-
   webpack: (config, { dev, isServer }) => {
     config.resolve.fallback = {
       ...config.resolve.fallback
@@ -61,22 +59,17 @@ const nextConfig = {
           maxSize: 70000,
           cacheGroups: {
             vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              priority: -10,
-              reuseExistingChunk: true,
+              test: /[\\/]node_modules[\\/]/, name: 'vendors', priority: -10, reuseExistingChunk: true
             },
             common: {
-              minChunks: 2,
-              priority: -20,
-              reuseExistingChunk: true,
-            },
-          },
-        },
+              minChunks: 2, priority: -20, reuseExistingChunk: true
+            }
+          }
+        }
       };
     }
     return config;
-  },
+  }
 };
 
 module.exports = nextConfig;

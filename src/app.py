@@ -7,6 +7,15 @@ from data.processor import DataProcessor
 
 app = Flask(__name__)
 
+# Add monitoring
+from prometheus_flask_exporter import PrometheusMetrics
+metrics = PrometheusMetrics(app)
+
+# Add caching
+from cachetools import cached, TTLCache
+cache = TTLCache(maxsize=100, ttl=300)
+
+@cached(cache)
 def get_updated_data():
     processor = DataProcessor()
     data = processor.load_data()
@@ -62,7 +71,15 @@ def filter_data():
         'preview': processed_data.head(5).to_dict(orient='records')
     })
 
+# Security Hardening
+from flask_talisman import Talisman
+talisman = Talisman(app, content_security_policy={
+    'default-src': "'self'",
+    'script-src': ["'self'", "cdn.plot.ly"]
+})
+
 @app.route('/export-data')
+@requires_authentication  # Missing auth decorator
 def export_data():
     format_type = request.args.get('format', 'csv')
     filter_params = json.loads(request.args.get('filters', '{}'))
@@ -110,3 +127,12 @@ def serve_viz(filename):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+# Module Structure
++ Well-organized Flask routes
+- Missing service layer abstraction
+! Risk: Business logic creeping into route handlers
+
+# Data Flow
++ Clear processing pipeline in DataProcessor
+! Potential bottleneck: Repeated file I/O in get_updated_data()

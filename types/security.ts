@@ -35,9 +35,10 @@ export interface SecurityConfig {
 export interface SecurityAnalysisResult {
   securityIssues: Array<{
     filePath: string;
-    issueType: 'sensitive' | 'config' | 'temp' | 'log';
+    issueType: 'sensitive' | 'config' | 'temp' | 'log' | 'dependency' | 'permissions';
     severity: 'low' | 'medium' | 'high';
     description: string;
+    remediationScript?: string;
   }>;
 
   metrics: {
@@ -45,6 +46,9 @@ export interface SecurityAnalysisResult {
     filesWithIssues: number;
     averageComplexity: number;
     testCoverage: number;
+    deploymentTime?: number;
+    memoryUsage?: number;
+    envValidationPassed?: boolean;
   };
 
   recommendations: Array<{
@@ -52,5 +56,6 @@ export interface SecurityAnalysisResult {
     priority: 'low' | 'medium' | 'high';
     description: string;
     suggestedFix?: string;
+    remediationScript?: string;
   }>;
 }

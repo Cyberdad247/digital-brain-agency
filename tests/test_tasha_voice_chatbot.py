@@ -11,22 +11,33 @@ from voice_chat.prompt_optimizer import SelfImprovingPromptOptimizer
 
 class TestTashaVoiceChatbot(unittest.TestCase):
     def setUp(self):
-        # Mock the API key for testing
-        self.api_key = "test_api_key"
+        # Mock the LLM provider manager
+        self.mock_provider_manager = MagicMock()
+        self.mock_provider_manager.get_credentials.return_value = {
+            "api_key": "test_api_key",
+            "project_id": "test_project"
+        }
         
         # Create a mock for the SelfImprovingPromptOptimizer
         self.mock_optimizer = MagicMock()
         
-        # Patch the SelfImprovingPromptOptimizer to return our mock
-        with patch('voice_chat.tasha_voice_chatbot.SelfImprovingPromptOptimizer') as mock_optimizer_class:
+        # Patch the dependencies
+        with patch('voice_chat.tasha_voice_chatbot.LLMProviderManager') as mock_manager_class, \
+             patch('voice_chat.tasha_voice_chatbot.SelfImprovingPromptOptimizer') as mock_optimizer_class:
+            
+            mock_manager_class.return_value = self.mock_provider_manager
             mock_optimizer_class.return_value = self.mock_optimizer
-            self.tasha = TashaVoiceChatbot(self.api_key)
+            
+            self.tasha = TashaVoiceChatbot("openrouter")
     
     def test_initialization(self):
         """Test that the chatbot initializes correctly"""
-        self.assertEqual(self.tasha.api_key, self.api_key)
+        self.assertEqual(self.tasha.api_key, "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")
         self.assertEqual(self.tasha.persona["voice"], "energetic_confident")
+        self.assertEqual(self.tasha.persona["context_window"], 10)
+        self.assertEqual(self.tasha.persona["security"], "Larissa_Shield_protocols")
         self.assertEqual(self.tasha.persona["multilingual"], "English/Spanish")
+        self.assertEqual(self.tasha.persona["prosody"], "MuseMaestro_tuning")
     
     def test_generate_greeting(self):
         """Test the greeting generation functionality"""
@@ -39,6 +50,10 @@ class TestTashaVoiceChatbot(unittest.TestCase):
         
         # Assert the result is what we expect
         self.assertEqual(result, expected_greeting)
+        
+        # Verify persona parameters and optimization modules
+        self.assertEqual(self.tasha.persona["voice"], "energetic_confident")
+        self.assertEqual(self.tasha.persona["context_window"], 10)
         
         # Verify the optimizer was called with the correct parameters
         self.mock_optimizer.optimize_prompt.assert_called_once_with(
@@ -77,6 +92,35 @@ class TestTashaVoiceChatbot(unittest.TestCase):
             modules=["AdAlchemy", "DataAlchemist"],
             iterations=2
         )
+
+    def test_conversation_flow(self):
+        """Test the complete conversation state flow"""
+        # Test initial state
+        self.assertEqual(self.tasha.conversation_state, 'greeting')
+        
+        # Test state transitions
+        self.tasha.process_user_input("Hi")
+        self.assertEqual(self.tasha.conversation_state, 'identifying_pain_points')
+        
+        self.tasha.process_user_input("I need help")
+        self.assertEqual(self.tasha.conversation_state, 'proposing_solutions')
+        
+        self.tasha.process_user_input("Okay")
+        self.assertEqual(self.tasha.conversation_state, 'scheduling_followup')
+
+    def test_error_handling(self):
+        """Test error recovery mechanism"""
+        # Force an error
+        self.mock_optimizer.optimize_prompt.side_effect = Exception("API failure")
+        
+        response = self.tasha.process_user_input("test")
+        self.assertEqual(response, "Apologies, I encountered an issue. Let's try that again.")
+        self.assertEqual(self.tasha.conversation_state, 'error')
+        
+        # Test recovery
+        self.mock_optimizer.optimize_prompt.side_effect = None
+        response = self.tasha.process_user_input("retry")
+        self.assertEqual(self.tasha.conversation_state, 'greeting')
     
     def test_schedule_followup(self):
         """Test the follow-up scheduling functionality"""

@@ -77,20 +77,21 @@ class DirectoryAnalyzer {
 
   private async getAllFiles(dir: string): Promise<string[]> {
     const files: string[] = [];
+    const ignoreDirs = this.ignoreDirs;
 
-    async function traverse(currentDir: string) {
+    const traverse = async (currentDir: string) => {
       const entries = await fs.readdir(currentDir, { withFileTypes: true });
 
       for (const entry of entries) {
         const fullPath = path.join(currentDir, entry.name);
 
-        if (entry.isDirectory() && !this.ignoreDirs.includes(entry.name)) {
+        if (entry.isDirectory() && !ignoreDirs.includes(entry.name)) {
           await traverse(fullPath);
         } else if (entry.isFile()) {
           files.push(fullPath);
         }
       }
-    }
+    };
 
     await traverse(dir);
     return files;
@@ -163,7 +164,7 @@ class DirectoryAnalyzer {
     });
   }
 
-  private async checkDependencies(rootDir: string): Promise<void> {
+  public async checkDependencies(rootDir: string): Promise<void> {
     return new Promise((resolve, reject) => {
       exec('npx depcheck', { cwd: rootDir }, (error, stdout, stderr) => {
         if (error && error.code !== 1) {

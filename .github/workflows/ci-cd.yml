@@ -138,16 +138,24 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Run deployment analysis
+        run: ts-node scripts/run-analyzer.ts --securityCheck --configCheck
+
+      - name: Execute security scan
+        run: ts-node scripts/run-security-analysis.ts
+
       - name: Build Project
         run: npm run build
         env:
-          # Add environment variables from secrets
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           NEXT_PUBLIC_SENTRY_DSN: ${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
           NEXT_PUBLIC_ENVIRONMENT: ${{ secrets.NEXT_PUBLIC_ENVIRONMENT || 'production' }}
           NEXT_PUBLIC_SENTRY_RELEASE: ${{ secrets.NEXT_PUBLIC_SENTRY_RELEASE || '1.0.0' }}
           NEXT_PUBLIC_VERSION: ${{ secrets.NEXT_PUBLIC_VERSION || '1.0.0' }}
+
+      - name: Deployment readiness check
+        run: ts-node scripts/check-deployment-readiness.ts
 
       - name: Install Vercel CLI
         run: npm install -g vercel@latest

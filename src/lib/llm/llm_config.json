@@ -1,0 +1,53 @@
+{
+  "providers": {
+    "openai": {
+      "endpoint": "https://api.openai.com/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    },
+    "mistral": {
+      "endpoint": "https://api.mistral.ai/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    },
+    "local": {
+      "endpoint": "http://localhost:11434/v1",
+      "required_params": ["model"],
+      "encrypted": false
+    },
+    "google": {
+      "endpoint": "https://us-central1-aiplatform.googleapis.com/v1",
+      "required_params": ["api_key", "project_id"],
+      "encrypted": true
+    },
+    "openrouter": {
+      "endpoint": "https://api.openrouter.ai/api/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    },
+    "deepseek": {
+      "endpoint": "https://api.deepseek.com/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    },
+    "groq": {
+      "endpoint": "https://api.groq.com/openai/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    },
+    "huggingface": {
+      "endpoint": "https://api.huggingface.co/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    },
+    "anthropic": {
+      "endpoint": "https://api.anthropic.com/v1",
+      "required_params": ["api_key"],
+      "encrypted": true
+    }
+  },
+  "security": {
+    "encryption_key": "${ENV:LLM_ENCRYPTION_KEY}",
+    "key_rotation_days": 30
+  }
+}

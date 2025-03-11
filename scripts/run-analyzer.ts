@@ -1,16 +1,26 @@
 import { directoryAnalyzer } from './directory-analyzer';
 import { LLMOrchestrator } from '../src/lib/llm/orchestrator';
+import { SecurityAnalyzer } from '../src/lib/security/SecurityAnalyzer';
+import { securityProfiles } from '../config/security.config';
+import { ConfigValidator } from '../src/lib/config/ConfigValidator';
+import { BundleAnalyzer } from '../src/lib/performance/BundleAnalyzer';
 
 interface OptimizationConfig {
   rootDir: string;
   enableLLM: boolean;
   securityCheck: boolean;
   bundleAnalysis: boolean;
+  configCheck: boolean;
 }
 
-async function runAnalysis(config: OptimizationConfig) {
-  console.log('Starting directory analysis...');
+// Add structured error handling
+interface AnalysisError {
+  module: string;
+  errorType: 'IO' | 'PROCESSING' | 'SECURITY';
+  recoveryStrategy: string;
+}
 
+async function runAnalysis() {
   try {
     // Run directory analysis
     const report = await directoryAnalyzer.analyzeDirectory(config.rootDir);
@@ -40,12 +50,44 @@ async function runAnalysis(config: OptimizationConfig) {
 
     if (config.securityCheck) {
       console.log('\nRunning security checks...');
-      // Add security scanning logic here
+      const envName = process.env.NODE_ENV || 'production';
+      const securityConfig = securityProfiles[envName as keyof typeof securityProfiles];
+      const securityAnalyzer = new SecurityAnalyzer(securityConfig);
+      await securityAnalyzer.analyze(config.rootDir);
+    }
+
+    // Configuration validation
+    if (config.configCheck) {
+      console.log('\nValidating configurations...');
+      const configValidator = new ConfigValidator();
+      const configResults = await configValidator.auditConfigs();
+      
+      console.log('\nConfiguration Validation Results:');
+      console.log('- Configuration issues found:', configResults.length);
+      
+      // Add configIssues property to report if needed
+      if (!('configIssues' in report)) {
+        (report as any).configIssues = configResults;
+      }
     }
 
     if (config.bundleAnalysis) {
       console.log('\nAnalyzing bundle size...');
-      // Add bundle size analysis logic here
+      const bundleAnalyzer = new BundleAnalyzer();
+      const bundleReport = await bundleAnalyzer.analyze({
+        // This works with either Vite or Webpack
+        bundler: (process.env.BUNDLER as 'vite' | 'webpack') || 'vite',
+        outputDir: './dist',
+        statsFile: './stats.json'
+      });
+      
+      console.log('\nBundle Analysis Results:');
+      console.log(`- Total Bundle Size: ${bundleReport.totalSize} KB`);
+      console.log(`- Largest Dependencies: ${bundleReport.largestDeps.map(d => `${d.name} (${d.size} KB)`).join(', ')}`);
+      console.log(`- Duplicate Packages: ${bundleReport.duplicates.length}`);
+      
+      // Add bundleIssues property to report if needed
+      (report as any).bundleIssues = bundleReport.issues;
     }
 
     console.log('\nAnalysis complete! Check the report above for details.');
@@ -61,4 +103,5 @@ runAnalysis({
   enableLLM: true,
   securityCheck: true,
   bundleAnalysis: true,
+  configCheck: true,
 });

@@ -1,0 +1,2507 @@
+{
+  "securityIssues": [
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.backup\\backup-log.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.backup\\backup-log.json",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.env",
+      "issueType": "sensitive",
+      "severity": "high",
+      "description": "Sensitive file detected. Consider securing or removing this file.",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.env ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.env)-$(date +%s).bak"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.github\\workflows\\ci-cd.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.github\\workflows\\ci.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.github\\workflows\\deploy.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.husky\\_\\husky.sh",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.husky\\_\\husky.sh"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\app-build-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\build-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\cache\\webpack\\client-development\\11.pack.gz",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\cache\\webpack\\client-development\\6.pack.gz",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\cache\\webpack\\client-development\\7.pack.gz",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\cache\\webpack\\client-development\\8.pack.gz",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\cache\\webpack\\server-development\\1.pack.gz",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\cache\\webpack\\server-development\\9.pack.gz",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\package.json",
+      "issueType": "dependency",
+      "severity": "medium",
+      "description": "Outdated dependencies detected",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\package.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\react-loadable-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\app\\page.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\app-paths-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\middleware-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\next-font-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\pages-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\server-reference-manifest.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\vendor-chunks\\@remix-run.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\vendor-chunks\\next.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\server\\vendor-chunks\\tailwind-merge.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_next_dist_client_components_react-dev-overlay_internal_components_Overlay_maint-4e1a10d5.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_next_dist_compiled_next_react-dev-overlay_dist_client_js-4d3086b8.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_next_dist_compiled_react-dom_cjs_react-dom_development_js-3041f41d.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_next_dist_compiled_react_cjs_react_development_js-a784779d.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_next_dist_shared_lib_router_router_js-ad07dca8.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_r.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_react-dom_cjs_react-dom_development_js-ac892209.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\chunks\\vendors-node_modules_remix-run_router_dist_router_js-94d418f7.js",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\024014c58f6a1413.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\05d7e735b7ca083b.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\2d54e367d15499e0.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\3075d8d2b8b5756f.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\3cab8de128437d0b.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\453be074a929fdd7.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\633457081244afec._.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\847517cb56453bf0.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\9f1a52d740da938a.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\b5dc1280f1c09764.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\edd0a83f9115f4e7.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\f7472bfef70ff1e8.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\f886cbb6bee3b885.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\static\\webpack\\fb34a6870f733f72.webpack.hot-update.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\types\\package.json",
+      "issueType": "dependency",
+      "severity": "medium",
+      "description": "Outdated dependencies detected",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.next\\types\\package.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.prettierrc.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\certifi\\cacert.pem",
+      "issueType": "sensitive",
+      "severity": "high",
+      "description": "Sensitive file detected. Consider securing or removing this file.",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\certifi\\cacert.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\certifi\\cacert.pem)-$(date +%s).bak"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\certifi\\cacert.pem",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\comtypes\\gen\\_C866CA3A_32F7_11D2_9602_00C04F8EE628_0_5_4.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\comtypes\\gen\\__pycache__\\_C866CA3A_32F7_11D2_9602_00C04F8EE628_0_5_4.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\cloud\\speech_v1\\gapic_metadata.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\cloud\\speech_v1p1beta1\\gapic_metadata.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\cloud\\speech_v2\\gapic_metadata.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\cloud\\texttospeech_v1\\gapic_metadata.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\cloud\\texttospeech_v1beta1\\gapic_metadata.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\protobuf\\descriptor_pb2.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\protobuf\\__pycache__\\descriptor_pb2.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\google\\_upb\\_message.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\cygrpc.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\_credentials\\roots.pem",
+      "issueType": "sensitive",
+      "severity": "high",
+      "description": "Sensitive file detected. Consider securing or removing this file.",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\_credentials\\roots.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\_credentials\\roots.pem)-$(date +%s).bak"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\_credentials\\roots.pem",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\huggingface_hub\\hf_api.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\huggingface_hub\\__pycache__\\hf_api.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\mpmath\\function_docs.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\mpmath\\__pycache__\\function_docs.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\fft\\_pocketfft_umath.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\lib\\tests\\__pycache__\\test_function_base.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\ma\\core.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\ma\\tests\\__pycache__\\test_core.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\ma\\__pycache__\\core.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\random\\mtrand.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\random\\_generator.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\typing\\tests\\data\\mypy.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\lib\\npy-pkg-config\\mlib.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\lib\\npy-pkg-config\\npymath.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\tests\\test_multiarray.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\tests\\__pycache__\\test_multiarray.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\tests\\__pycache__\\test_numeric.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\tests\\__pycache__\\test_umath.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\_multiarray_umath.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy\\_core\\_simd.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-43e11ff0749b8cbe0a615c9cf6737e0e.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\numpy.libs\\msvcp140-263139962577ecda4cd9469ca360a746.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\core\\frame.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\core\\generic.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\core\\indexes\\base.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\core\\indexes\\__pycache__\\base.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\core\\__pycache__\\frame.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\core\\__pycache__\\generic.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\algos.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\groupby.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\hashtable.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\index.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\internals.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\interval.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\join.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\lib.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\parsers.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\sparse.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslib.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\fields.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\offsets.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\parsing.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\period.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\strptime.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\timedeltas.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\tslibs\\timestamps.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas\\_libs\\window\\aggregations.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pandas.libs\\msvcp140-0f2ea95580b32bcfc81c235d5751ce78.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem",
+      "issueType": "sensitive",
+      "severity": "high",
+      "description": "Sensitive file detected. Consider securing or removing this file.",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem)-$(date +%s).bak"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64-arm.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64-arm.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64-arm.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64-arm.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pyaudio\\_portaudio.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pydantic_core\\_pydantic_core.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pypiwin32-223.dist-info\\metadata.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pythonwin\\mfc140u.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pythonwin\\Pythonwin.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pythonwin\\Pythonwin.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pythonwin\\scintilla.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pythonwin\\win32ui.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pywin32_system32\\pythoncom312.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\regex\\_regex.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\regex\\__pycache__\\test_regex.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\safetensors\\_safetensors_rust.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-arm64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-arm64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\command\\launcher manifest.xml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\config\\distutils.schema.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\config\\setuptools.schema.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_validations.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-arm64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-arm64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-linux-x86",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-linux-x86_64",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-mac",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-win32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-win32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-win32.exe",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\pocketsphinx-data\\en-US\\acoustic-model\\mdef",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\pocketsphinx-data\\en-US\\acoustic-model\\means",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\pocketsphinx-data\\en-US\\acoustic-model\\sendump",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\pocketsphinx-data\\en-US\\acoustic-model\\variances",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\pocketsphinx-data\\en-US\\language-model.lm.bin",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\pocketsphinx-data\\en-US\\pronounciation-dictionary.dict",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\assumptions\\tests\\__pycache__\\test_query.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\core\\tests\\__pycache__\\test_args.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\functions\\elementary\\tests\\__pycache__\\test_trigonometric.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\matrices\\tests\\__pycache__\\test_matrices.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\matrices\\tests\\__pycache__\\test_matrixbase.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\physics\\quantum\\tests\\test_spin.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\physics\\quantum\\tests\\__pycache__\\test_spin.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\polys\\benchmarks\\bench_solvers.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\polys\\benchmarks\\__pycache__\\bench_solvers.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\polys\\tests\\__pycache__\\test_polytools.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\polys\\__pycache__\\polyquinticconst.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\polys\\__pycache__\\polytools.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\solvers\\ode\\tests\\__pycache__\\test_systems.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\solvers\\tests\\__pycache__\\test_solvers.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\sympy\\solvers\\tests\\__pycache__\\test_solveset.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\tokenizers\\tokenizers.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\bin\\asmjit.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\bin\\fbgemm.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\bin\\protoc.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\bin\\protoc.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\bin\\protoc.exe",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\fx\\experimental\\symbolic_shapes.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\fx\\experimental\\__pycache__\\symbolic_shapes.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\include\\ATen\\core\\TensorBody.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\include\\ATen\\RedispatchFunctions.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\include\\ATen\\RegistrationDeclarations.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\include\\ATen\\VmapGeneratedPlumbing.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\include\\sleef.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\include\\torch\\csrc\\autograd\\generated\\Functions.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\asmjit.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\c10.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\c10.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\fbgemm.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\fbgemm.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\fmt.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\kineto.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\libiomp5md.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\libprotobuf-lite.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\libprotobuf.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\libprotoc.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\microkernels-prod.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\sleef.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\torch_cpu.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\torch_python.dll",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\lib\\XNNPACK.lib",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\onnx\\__pycache__\\symbolic_opset9.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\sparse\\_triton_ops_meta.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\sparse\\__pycache__\\_triton_ops_meta.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\common_methods_invocations.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\distributed\\distributed_test.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\distributed\\rpc\\__pycache__\\rpc_test.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\distributed\\__pycache__\\distributed_test.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\generated\\annotated_fn_args.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\generated\\__pycache__\\annotated_fn_args.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\__pycache__\\common_methods_invocations.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\testing\\_internal\\__pycache__\\common_utils.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\utils\\benchmark\\utils\\valgrind_wrapper\\valgrind.h",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\utils\\hipify\\cuda_to_hip_mappings.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\utils\\hipify\\__pycache__\\cuda_to_hip_mappings.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_C\\_VariableFunctions.pyi",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_C\\__init__.pyi",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_export\\serde\\schema.yaml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_inductor\\ir.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_inductor\\__pycache__\\ir.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_inductor\\__pycache__\\lowering.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_refs\\__pycache__\\__init__.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_torch_docs.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\_VF.pyi",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\__pycache__\\overrides.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\__pycache__\\_meta_registrations.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\__pycache__\\_torch_docs.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch-2.6.0.dist-info\\LICENSE",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch-2.6.0.dist-info\\RECORD",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torchgen\\packaged\\ATen\\native\\native_functions.yaml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torchgen\\packaged\\ATen\\native\\native_functions.yaml",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torchgen\\packaged\\ATen\\native\\tags.yaml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torchgen\\packaged\\ATen\\templates\\RegisterDispatchDefinitions.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torchgen\\packaged\\autograd\\deprecated.yaml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torchgen\\packaged\\autograd\\derivatives.yaml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\tqdm\\completion.sh",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\tqdm\\completion.sh"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\generation\\utils.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\modeling_utils.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\trainer.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\utils\\dummy_pt_objects.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\utils\\__pycache__\\dummy_pt_objects.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\__init__.py",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\__pycache__\\modeling_utils.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers\\__pycache__\\trainer.cpython-312.pyc",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\transformers-4.49.0.dist-info\\RECORD",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\win32\\pythonservice.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\win32\\pythonservice.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\win32comext\\shell\\shell.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\yaml\\_yaml.cp312-win_amd64.pyd",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\activate.bat",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\activate.bat"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\clear_comtypes_cache.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\clear_comtypes_cache.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\deactivate.bat",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\deactivate.bat"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\dotenv.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\dotenv.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\f2py.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\f2py.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\fastapi.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\fastapi.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\huggingface-cli.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\huggingface-cli.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\isympy.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\isympy.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\normalizer.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\normalizer.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\numpy-config.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\numpy-config.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip3.12.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip3.12.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip3.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip3.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-decrypt.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-decrypt.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-encrypt.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-encrypt.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-keygen.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-keygen.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-priv2pub.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-priv2pub.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-sign.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-sign.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-verify.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-verify.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\python.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\python.exe",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pythonw.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pythonw.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pythonw.exe",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\torchfrtrace.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\torchfrtrace.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\torchrun.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\torchrun.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\tqdm.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\tqdm.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\transformers-cli.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\transformers-cli.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\uvicorn.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\uvicorn.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.vercel\\project.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.vscode\\extensions.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.vscode\\settings.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\backend\\api\\personas\\default.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\backend\\personas\\enterprise_executive.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\backend\\personas\\entrepreneur.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\backend\\personas\\marketing_manager.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\backend\\personas\\sample-persona.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\backend\\tsconfig.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\components.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\config\\devcontainer.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\config\\tsconfig.base.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\docker-compose.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\n8n-nodes\\agency-workflow\\package.json",
+      "issueType": "dependency",
+      "severity": "medium",
+      "description": "Outdated dependencies detected",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\n8n-nodes\\agency-workflow\\package.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\n8n-nodes\\agency-workflow\\tsconfig.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\.github\\FUNDING.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\.github\\workflows\\main.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\composer.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\modules\\base\\composer.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\modules\\base\\css\\font-awesome\\webfonts\\fa-brands-400.svg",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\modules\\base\\css\\font-awesome\\webfonts\\fa-solid-900.svg",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\modules\\maxmind_geoip\\includes\\maxmind-ws\\ini\\countryCodes.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\modules\\maxmind_geoip\\includes\\maxmind-ws\\ini\\metroCodes.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\modules\\maxmind_geoip\\includes\\maxmind-ws\\ini\\subCountryCodes.ini",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\package-lock.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\package.json",
+      "issueType": "dependency",
+      "severity": "medium",
+      "description": "Outdated dependencies detected",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\Open-Web-Analytics\\package.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\package-lock.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\package.json",
+      "issueType": "dependency",
+      "severity": "medium",
+      "description": "Outdated dependencies detected",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\package.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\public\\lovable-uploads\\e37ad8e8-a3f4-4d85-a0bc-308b8addbb92.png",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\serverless.yml",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\setup.sh",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\setup.sh"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\src\\lib\\llm\\llm_config.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\tsconfig.app.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\tsconfig.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\tsconfig.tsbuildinfo",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\bin\\dotenv.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\bin\\dotenv.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem",
+      "issueType": "sensitive",
+      "severity": "high",
+      "description": "Sensitive file detected. Consider securing or removing this file.",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem)-$(date +%s).bak"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64-arm.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64-arm.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w32.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w32.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64-arm.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64-arm.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\activate.bat",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\activate.bat"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\deactivate.bat",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\deactivate.bat"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip3.12.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip3.12.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip3.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip3.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\python.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\python.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\python.exe",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pythonw.exe",
+      "issueType": "permissions",
+      "severity": "medium",
+      "description": "Insecure file permissions detected",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pythonw.exe"
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pythonw.exe",
+      "issueType": "temp",
+      "severity": "low",
+      "description": "File size exceeds 250000 bytes."
+    },
+    {
+      "filePath": "C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\vercel.json",
+      "issueType": "config",
+      "severity": "medium",
+      "description": "Configuration file detected. Ensure no sensitive data is exposed."
+    }
+  ],
+  "metrics": {
+    "totalFiles": 35103,
+    "filesWithIssues": 316,
+    "averageComplexity": 0,
+    "testCoverage": 0
+  },
+  "recommendations": [
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for sensitive issue",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.env ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.env)-$(date +%s).bak"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.husky\\_\\husky.sh"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for dependency issue",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for dependency issue",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for sensitive issue",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\certifi\\cacert.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\certifi\\cacert.pem)-$(date +%s).bak"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for sensitive issue",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\_credentials\\roots.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\grpc\\_cython\\_credentials\\roots.pem)-$(date +%s).bak"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for sensitive issue",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem)-$(date +%s).bak"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64-arm.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64-arm.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\pythonwin\\Pythonwin.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli-arm64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\cli.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui-arm64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\setuptools\\gui.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\speech_recognition\\flac-win32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\torch\\bin\\protoc.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\tqdm\\completion.sh"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Lib\\site-packages\\win32\\pythonservice.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\activate.bat"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\clear_comtypes_cache.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\deactivate.bat"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\dotenv.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\f2py.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\fastapi.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\huggingface-cli.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\isympy.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\normalizer.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\numpy-config.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip3.12.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pip3.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-decrypt.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-encrypt.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-keygen.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-priv2pub.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-sign.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pyrsa-verify.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\python.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\pythonw.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\torchfrtrace.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\torchrun.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\tqdm.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\transformers-cli.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\.venv\\Scripts\\uvicorn.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for dependency issue",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for dependency issue",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for dependency issue",
+      "remediationScript": "npm update --save && npm audit fix"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\setup.sh"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\bin\\dotenv.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for sensitive issue",
+      "remediationScript": "#!/bin/bash\nmv C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem ./secure-vault/$(basename C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\cacert.pem)-$(date +%s).bak"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64-arm.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\t64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w32.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64-arm.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\w64.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\activate.bat"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\deactivate.bat"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip3.12.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pip3.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\python.exe"
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "description": "Automated fix available for permissions issue",
+      "remediationScript": "chmod 600 C:\\Users\\vizio\\Desktop\\digital-brain-agency-clone\\venv\\Scripts\\pythonw.exe"
+    }
+  ]
+}

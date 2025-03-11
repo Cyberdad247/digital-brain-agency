@@ -1,3 +1,5 @@
+'use client';
+
 import { ErrorLogger } from './ErrorLogger';
 
 interface LoggingOptions {

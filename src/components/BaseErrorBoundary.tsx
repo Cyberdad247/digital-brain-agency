@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ErrorMonitoringService } from '../lib/error/ErrorMonitoringService';
-import { ErrorFallback } from './ErrorFallback';
+import ErrorFallback from './ErrorFallback';
 
 interface BaseErrorBoundaryProps {
   children: React.ReactNode;
@@ -40,10 +40,14 @@ export class BaseErrorBoundary extends React.Component<BaseErrorBoundaryProps, S
   }
 
   protected async logError(error: Error, errorInfo: React.ErrorInfo): Promise<void> {
-    await this.errorMonitor.captureError(error, {
-      componentStack: errorInfo.componentStack,
-      ...this.errorMonitor.getBrowserErrorMetadata()
-    });
+    try {
+      await this.errorMonitor.captureError(error, {
+        componentStack: errorInfo.componentStack,
+        ...this.errorMonitor.getBrowserErrorMetadata()
+      });
+    } catch (logError) {
+      console.error('Error during logging:', logError);
+    }
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
@@ -58,10 +62,7 @@ export class BaseErrorBoundary extends React.Component<BaseErrorBoundaryProps, S
       this.state.hasError &&
       prevProps.resetCondition !== this.props.resetCondition
     ) {
-      this.setState({
-        hasError: false,
-        error: undefined,
-      });
+      this.handleReset();
     }
   }
 

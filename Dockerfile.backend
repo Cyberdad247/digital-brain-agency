@@ -1,0 +1,30 @@
+# Dockerfile for Backend
+
+# Step 1: Use an official Node.js image for backend
+FROM node:20-alpine
+
+# Step 2: Set the working directory in the container
+WORKDIR /app
+
+# Step 3: Copy package files for dependency installation
+COPY package*.json ./
+
+# Step 4: Install production dependencies
+RUN npm install --omit=dev
+
+# Step 5: Copy backend-specific files
+COPY server.js ./
+COPY backend/ ./backend/
+COPY lib/ ./lib/
+COPY config/ ./config/
+COPY types/ ./types/
+
+# Step 6: Set environment variable for production
+ENV NODE_ENV=production
+ENV PORT=3002
+
+# Step 7: Expose backend API port
+EXPOSE 3002
+
+# Step 8: Command to run the backend application
+CMD ["node", "server.js"]

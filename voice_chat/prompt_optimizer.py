@@ -10,7 +10,7 @@ class SelfImprovingPromptOptimizer:
 
     def optimize_prompt(self, prompt: str, context: str, modules: List[str], iterations: int) -> str:
         """
-        Optimizes a prompt based on context, modules, and iterations.
+        Optimizes a prompt using the external API service.
         
         Args:
             prompt (str): The original prompt to optimize
@@ -21,15 +21,30 @@ class SelfImprovingPromptOptimizer:
         Returns:
             str: The optimized prompt
         """
-        self.logger.info(f"Optimizing prompt with context: {context}, modules: {modules}, iterations: {iterations}")
+        try:
+            self.logger.info(f"Optimizing prompt with context: {context}, modules: {modules}, iterations: {iterations}")
+            
+            # Initialize API client
+            api_client = ApiClient()
+            api_client.authenticate(self.api_key)
+            
+            # Make API request
+            response = api_client.send_request(
+                method='POST',
+                endpoint='optimize-prompt',
+                data={
+                    'prompt': prompt,
+                    'context': context,
+                    'modules': modules,
+                    'iterations': iterations
+                }
+            )
+            
+            return response.get('optimized_prompt', prompt)
         
-        # Simulate optimization by adding a prefix and suffix to the prompt
-        optimized_prompt = f"Optimized Prompt: {prompt}"
-        
-        # In a real implementation, this would use the API key to call an AI service
-        # and iteratively improve the prompt based on feedback
-        
-        return optimized_prompt
+        except Exception as e:
+            self.logger.error(f"Prompt optimization failed: {str(e)}")
+            return prompt
 
 
 # Example usage

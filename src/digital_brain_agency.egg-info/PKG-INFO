@@ -1,0 +1,9 @@
+Metadata-Version: 2.2
+Name: digital_brain_agency
+Version: 0.1.0
+Requires-Python: >=3.8
+Requires-Dist: redis>=4.5.5
+Requires-Dist: python-redlock>=1.2.0
+Requires-Dist: pytest>=7.4.0
+Dynamic: requires-dist
+Dynamic: requires-python

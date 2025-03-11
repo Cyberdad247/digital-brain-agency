@@ -1,18 +1,31 @@
-import { securityConfig } from '../config/security.config';
+import { securityProfiles } from '../config/security.config';
 import { SecurityAnalyzer } from '../src/lib/security/SecurityAnalyzer';
+import { directoryAnalyzer } from './directory-analyzer';
 import path from 'path';
+import { SecurityAnalysisResult } from '../types/security';
 
-async function runSecurityAnalysis() {
+import fs from 'fs/promises';
+import process from 'process';
+
+export async function runSecurityAnalysis() {
   console.log('Starting security analysis...');
 
   try {
     const rootDir = process.cwd();
+    const envName = process.env.NODE_ENV || 'production';
+    const securityConfig = securityProfiles[envName as keyof typeof securityProfiles];
     const analyzer = new SecurityAnalyzer(securityConfig);
 
     // Run the analysis
     const result = await analyzer.analyze(rootDir);
 
     // Display results
+    console.log('\nChecking for vulnerable dependencies...');
+    try {
+      await directoryAnalyzer.checkDependencies(rootDir);
+    } catch (error) {
+      console.error('Error checking dependencies:', error);
+    }
     console.log('\nSecurity Analysis Report:');
     console.log('=======================');
     console.log(`Total Files Analyzed: ${result.metrics.totalFiles}`);

@@ -6,11 +6,30 @@ import { exec } from 'child_process';
 export class SecurityAnalyzer {
   private config: SecurityConfig;
 
+  private securityPatterns: any;
+
   constructor(config: SecurityConfig) {
     this.config = config;
+    // Initialize security patterns if not provided in config
+    this.securityPatterns = {
+      ciCdVulnerabilities: /(aws-access-key|api-key|secret-token|password|\$\{?SECRET_)/gi,
+      insecurePermissions: /\.(sh|exe|bat)$/i,
+      sensitiveFiles: /(\.env$|\.pem$|\.crt$|\.key$|\.pgp$|\.passwd$)/i
+    };
+    
+    // Ensure config has securityPatterns initialized
+    if (!this.config.securityPatterns) {
+      this.config.securityPatterns = {
+        sensitiveFiles: this.securityPatterns.sensitiveFiles,
+        configFiles: /\.(json|yaml|yml|xml|ini|conf|config)$/i,
+        tempFiles: /\.(tmp|temp|bak|old|swp)$/i,
+        logFiles: /\.(log|logs)$/i
+      };
+    }
   }
 
   async analyze(rootDir: string): Promise<SecurityAnalysisResult> {
+    await this.validateCICDConfigurations(rootDir);
     const result: SecurityAnalysisResult = {
       securityIssues: [],
       metrics: {
@@ -28,13 +47,21 @@ export class SecurityAnalyzer {
       result.metrics.totalFiles = files.length;
 
       // Analyze each file
+      let processedFiles = 0;
       for (const file of files) {
         const issues = await this.analyzeFile(file);
         if (issues.length > 0) {
           result.securityIssues.push(...issues);
           result.metrics.filesWithIssues++;
         }
+        // Progress reporting
+        processedFiles++;
+        if (processedFiles % 10 === 0) {
+          const progress = Math.round((processedFiles / files.length) * 100);
+          console.log(`Analysis progress: ${progress}% complete`);
+        }
       }
+      console.log('File analysis complete. Calculating metrics...');
 
       // Calculate metrics
       await this.calculateMetrics(result);
@@ -49,22 +76,43 @@ export class SecurityAnalyzer {
     }
   }
 
+  private async validateCICDConfigurations(rootDir: string): Promise<SecurityAnalysisResult['securityIssues']> {
+    const ciCdFiles = await this.getAllFiles(path.join(rootDir, '.github/workflows'));
+    const issues: SecurityAnalysisResult['securityIssues'] = [];
+    
+    for (const file of ciCdFiles) {
+      const content = await fs.readFile(file, 'utf8');
+      
+      if (this.securityPatterns.ciCdVulnerabilities.test(content)) {
+        issues.push({
+          filePath: file,
+          issueType: 'sensitive',
+          severity: 'high',
+          description: 'Potential secret exposure in CI/CD pipeline configuration'
+        });
+      }
+    }
+    
+    return issues;
+  }
+
   private async getAllFiles(dir: string): Promise<string[]> {
     const files: string[] = [];
+    const excludedDirs = this.config.excludedDirs || [];
 
-    async function traverse(currentDir: string) {
+    const traverse = async (currentDir: string) => {
       const entries = await fs.readdir(currentDir, { withFileTypes: true });
 
       for (const entry of entries) {
         const fullPath = path.join(currentDir, entry.name);
 
-        if (entry.isDirectory() && !this.config.excludedDirs.includes(entry.name)) {
+        if (entry.isDirectory() && !excludedDirs.includes(entry.name)) {
           await traverse(fullPath);
         } else if (entry.isFile()) {
           files.push(fullPath);
         }
       }
-    }
+    };
 
     await traverse(dir);
     return files;
@@ -83,9 +131,32 @@ export class SecurityAnalyzer {
         issueType: 'sensitive',
         severity: 'high',
         description: 'Sensitive file detected. Consider securing or removing this file.',
+        remediationScript: `#!/bin/bash
+mv ${filePath} ./secure-vault/$(basename ${filePath})-$(date +%s).bak`
       });
     }
 
+    // Generate dependency update script for outdated packages
+    if (filePath.endsWith('package.json')) {
+      issues.push({
+        filePath,
+        issueType: 'dependency',
+        severity: 'medium',
+        description: 'Outdated dependencies detected',
+        remediationScript: 'npm update --save && npm audit fix'
+      });
+    }
+
+    // Generate permission fix script
+    if (this.securityPatterns.insecurePermissions.test(fileName)) {
+      issues.push({
+        filePath,
+        issueType: 'permissions',
+        severity: 'medium',
+        description: 'Insecure file permissions detected',
+        remediationScript: `chmod 600 ${filePath}`
+      });
+    }
     if (this.config.securityPatterns.configFiles.test(fileName)) {
       issues.push({
         filePath,
@@ -110,50 +181,41 @@ export class SecurityAnalyzer {
   }
 
   private async calculateMetrics(result: SecurityAnalysisResult): Promise<void> {
-    // Calculate average complexity
-    const complexitySum = result.securityIssues.reduce((sum, issue) => {
-      return sum + (issue.severity === 'high' ? 3 : issue.severity === 'medium' ? 2 : 1);
-    }, 0);
-
-    result.metrics.averageComplexity = complexitySum / (result.metrics.filesWithIssues || 1);
-
-    // Get test coverage if available
     try {
-      const coverage = await this.getTestCoverage();
-      result.metrics.testCoverage = coverage;
+      const coverageReport = await fs.readFile('coverage/coverage-summary.json', 'utf-8');
+      const coverageData = JSON.parse(coverageReport);
+      result.metrics.testCoverage = coverageData.total.lines.pct;
+
+      // Calculate average complexity from static analysis
+      const complexityReport = await fs.readFile('complexity-report.json', 'utf-8');
+      result.metrics.averageComplexity = JSON.parse(complexityReport).average;    
     } catch (error) {
-      console.warn('Could not determine test coverage:', error);
+      console.warn('Metric calculation warning:', error instanceof Error ? error.message : String(error));
       result.metrics.testCoverage = 0;
+      result.metrics.averageComplexity = 0;
     }
   }
 
-  private generateRecommendations(result: SecurityAnalysisResult): void {
-    // Add general recommendations based on issues found
-    if (result.metrics.testCoverage < this.config.thresholds.minTestCoverage) {
-      result.recommendations.push({
-        category: 'maintenance',
-        priority: 'high',
-        description: 'Test coverage is below the minimum threshold',
-        suggestedFix: 'Add more unit tests to improve code coverage',
-      });
-    }
+  private generateRecommendations(result: SecurityAnalysisResult) {
+    // Generate automated remediation scripts
+    result.securityIssues.forEach(issue => {
+      if (issue.remediationScript) {
+        result.recommendations.push({
+          category: 'security',
+          priority: 'high',
+          description: `Automated fix available for ${issue.issueType} issue`,
+          remediationScript: issue.remediationScript
+        });
+      }
+    });
 
-    if (result.securityIssues.some((issue) => issue.severity === 'high')) {
+    // Add general recommendations
+    if (result.metrics.envValidationPassed === false) {
       result.recommendations.push({
         category: 'security',
         priority: 'high',
-        description: 'High severity security issues detected',
-        suggestedFix: 'Review and address all high severity security issues',
-      });
-    }
-
-    // Add performance recommendations
-    if (result.metrics.averageComplexity > this.config.thresholds.maxComplexity) {
-      result.recommendations.push({
-        category: 'performance',
-        priority: 'medium',
-        description: 'Code complexity is above threshold',
-        suggestedFix: 'Refactor complex code sections to improve maintainability',
+        description: 'Environment validation failed - review configuration',
+        suggestedFix: 'Check environment variables and config files'
       });
     }
   }
