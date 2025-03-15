@@ -165,3 +165,24 @@ def test_predict_endpoint_performance():
     # Assert that average request time is under 100ms
     # This threshold should be adjusted based on your requirements
     assert avg_time < 0.1, f"Average request time {avg_time:.4f}s exceeds threshold"
+
+def test_chaos_injection():
+    # Test API resilience with invalid payloads and network faults
+    invalid_payloads = [
+        None,
+        {'invalid': 'data'},
+        json.dumps({'data': 'A'*10000})  # Oversized payload
+    ]
+
+    for payload in invalid_payloads:
+        response = client.post('/predict', 
+            content=payload,
+            headers={"X-Chaos-Mode": "latency=500"}
+        )
+        assert response.status_code == 422
+        assert 'validation_error' in response.json()
+
+    # Test circuit breaker pattern
+    for _ in range(10):
+        response = client.post('/predict', json={"data": "stress-test"})
+    assert response.status_code == 503
