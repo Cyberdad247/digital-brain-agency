@@ -97,11 +97,23 @@ async function runAnalysis() {
   }
 }
 
-// Run the analysis with default configuration
-runAnalysis({
+// Parse command line arguments
+const args = process.argv.slice(2);
+const config: OptimizationConfig = {
   rootDir: process.cwd(),
-  enableLLM: true,
-  securityCheck: true,
-  bundleAnalysis: true,
-  configCheck: true,
-});
+  enableLLM: args.includes('--enableLLM'),
+  securityCheck: args.includes('--securityCheck'),
+  bundleAnalysis: args.includes('--bundleAnalysis'),
+  configCheck: args.includes('--configCheck')
+};
+
+// If no specific flags are provided, enable all checks
+if (!args.some(arg => arg.startsWith('--'))) {
+  config.enableLLM = true;
+  config.securityCheck = true;
+  config.bundleAnalysis = true;
+  config.configCheck = true;
+}
+
+// Run the analysis with the configured options
+runAnalysis(config);
