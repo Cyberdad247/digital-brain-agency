@@ -1,28 +1,36 @@
-# Dockerfile for Frontend
+# Multi-stage build for both frontend and backend
 
-# Step 1: Use an official Node.js image as a parent image
-FROM node:20-alpine
+# Python backend stage
+FROM python:3.10-slim as python-builder
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
 
-# Step 2: Set the working directory in the container
+# Node.js frontend stage
+FROM node:20-alpine as node-builder
 WORKDIR /app
-
-# Step 3: Copy package.json and package-lock.json files
 COPY package*.json ./
-
-# Step 4: Install dependencies
 RUN npm install
-
-# Step 5: Copy the entire project into the container
 COPY . .
-
-# Step 6: Build the app for production
 RUN npm run build
 
-# Step 7: Expose port for the frontend to be accessible
-EXPOSE 3000
+# Final stage
+FROM python:3.10-slim
+COPY --from=python-builder /root/.local /root/.local
+ENV PATH=/root/.local/bin:$PATH
 
-# Step 8: Set environment variable for production
+# Copy frontend build
+WORKDIR /app
+COPY --from=node-builder /app/dist ./dist
+COPY --from=node-builder /app/public ./public
+
+# Copy the rest of the application
+COPY . .
+
+# Set environment variable for production
 ENV NODE_ENV=production
 
-# Step 9: Command to run the application
+# Expose port for the application
+EXPOSE 3000
+
+# Command to run the application
 CMD ["npm", "start"]

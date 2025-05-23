@@ -3,3 +3,9 @@ prisma/
 tests/
 Dockerfile
 serverless.yml
+terraform/**
+.backup/**
+.venv/**
+venv/**
+__pycache__/**
+.pytest_cache/**

@@ -10,4 +10,6 @@ python-multipart>=0.0.5
 numpy>=1.21.0
 pandas>=1.3.0
 csvkit>=1.0.7  # Add for CSV data validation and processing
-# Add other dependencies below
+pathlib
+pickle-mixin
+hashlib-blake3

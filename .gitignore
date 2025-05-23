@@ -16,6 +16,7 @@ __pycache__/
 # Build outputs
 build
 dist
+dist-ssr
 
 # Environment variables
 .env
@@ -23,46 +24,32 @@ dist
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*
+*.local
 
 # Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+logs
+*.log
 
 # IDE files
 .idea/
 .vscode/
 *.swp
 *.swo
-
-# OS files
-.DS_Store
-Thumbs.db
-dist
-dist-ssr
-
-# Local environment files
-.env
-.env.*
-*.local
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
 .idea
-.vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.vercel
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel
 .vercel
-node_modules

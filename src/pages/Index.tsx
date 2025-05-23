@@ -4,6 +4,10 @@ import { AboutSection } from '@/components/AboutSection';
 import { Testimonials } from '@/components/Testimonials';
 import { Button } from '@/components/ui/button';
 import { Navigation } from '@/components/Navigation';
+import { HeroSection } from '@/components/HeroSection';
+import { TestimonialsSection } from '@/components/TestimonialsSection';
+import { Footer } from '@/components/Footer';
+import { VoiceChatBot } from '@/components/VoiceChatBot';
 import styles from '@/components/Hero.module.css';
 import { CSSProperties, useEffect, useRef } from 'react';
 
@@ -78,13 +82,8 @@ const Index = () => {
           <ContactForm />
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 text-center text-gray-400">
-        <div className="container mx-auto px-4">
-          <p>© 2024 Invisioned Marketing. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
+      <VoiceChatBot />
     </div>
   );
 };

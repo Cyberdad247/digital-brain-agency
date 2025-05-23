@@ -9,10 +9,11 @@
  * @symb 📊 - Analytics & Telemetry
  * @symb 👤 - Identity & Persona Management
  */
+import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import { Toaster } from './components/ui/toaster';
-import { Toaster as Sonner } from './components/ui/sonner';
-import { TooltipProvider } from './components/ui/tooltip';
+import { Toaster } from '@/components/ui/toaster';
+import { Toaster as Sonner } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import { ErrorProvider } from './components/ErrorProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Refine } from '@refinedev/core';
@@ -32,6 +33,8 @@ import { Chatbot } from './components/Chatbot';
 import { Navigation } from './components/Navigation';
 import { PersonaProvider } from './components/PersonaProvider';
 import { ChatProvider } from './components/ChatContext';
+import { EnhancedVoiceChatBot } from './components/EnhancedVoiceChatBot';
+import { VoiceChatBot } from './components/VoiceChatBot';
 
 /** 
  * 🔄🗄️ React Query Client - Neural Cache Core
